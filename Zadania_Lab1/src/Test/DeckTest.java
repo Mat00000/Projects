@@ -70,9 +70,6 @@ public class DeckTest {
 	public void testOutError() {
 		Assert.assertEquals("Error", d.outError());
 	}
-	@Ignore
-	public void testIgnore() {
-	}
 	
 	@After
     public void tearDown() throws Exception {
