@@ -5,7 +5,6 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import Deck.Card;
 import Deck.Deck;
 import junit.framework.Assert;
 
@@ -23,15 +22,11 @@ public class DeckTest {
     }
 	
 	@SuppressWarnings("static-access")
-	@Test(timeout=10)
-	public void testSortDeck_32() {
-		Deck deck1 = new Deck(32);
-		Deck deck2 = new Deck(32);
-		deck1.sortDeck();
-		deck2.sortDeck();
-		Card card1 = deck1.cards.get(20);
-		Card card2 = deck2.cards.get(20);
-		Assert.assertSame(card1, card2);;
+	@Test(timeout=100)
+	public void testDeckIsEmpty_32() {
+		Deck deck = new Deck(32);
+		boolean b = deck.cards.isEmpty();
+		Assert.assertFalse(b);
 	}
 	
 	@SuppressWarnings("static-access")
