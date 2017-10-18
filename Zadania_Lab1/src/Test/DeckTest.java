@@ -31,11 +31,11 @@ public class DeckTest {
 	
 	@SuppressWarnings("static-access")
 	@Test
-	public void testShuffleDeck() {
+	public void testSortDeck() {
 		Deck deck1 = new Deck(52);
 		Deck deck2 = new Deck(52);
-		deck1.shuffleDeck();
-		deck2.shuffleDeck();
+		deck1.sortDeck();;
+		deck2.sortDeck();
 		String card1 = deck1.cards.get(1).toStr();
 		String card2 = deck2.cards.get(1).toStr();
 		Assert.assertEquals(card1, card2);
