@@ -49,13 +49,12 @@ public class DeckTest {
 		Assert.assertEquals("As Spade", deck.outCard());	
 	}
 	
-	
-	
-	/*@SuppressWarnings("static-access")
-	@Test(expected=error)
-	public void test() {
-		d.cards.clear();
-	}*/
+	@Test 
+	public void testOdKolegi() {
+		Deck deck = new Deck(32);
+		boolean b = deck.cards.isEmpty();
+		Assert.assertTrue(b);
+	}
 	
 	@Test
 	public void testNotNullDeck() {
