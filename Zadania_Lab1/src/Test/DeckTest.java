@@ -49,7 +49,7 @@ public class DeckTest {
 		Assert.assertEquals("As Spade", deck.outCard());	
 	}
 	
-	@Test 
+	@Ignore 
 	public void testOdKolegi() {
 		Deck deck = new Deck(32);
 		boolean b = deck.cards.isEmpty();
