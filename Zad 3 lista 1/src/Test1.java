@@ -31,6 +31,10 @@ public class Test1 extends TestCase {
 		Deck d = new Deck(52);
 		Assert.assertTrue(d.isvalid());
 	}
+	@Test
+	public void test7() {
+		
+	}
 	
 	@org.junit.Test
 	public void test5(){
