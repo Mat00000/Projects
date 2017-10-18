@@ -49,6 +49,7 @@ public class DeckTest {
 		Assert.assertEquals("As Spade", deck.outCard());	
 	}
 	
+	@SuppressWarnings("static-access")
 	@Ignore 
 	public void testOdKolegi() {
 		Deck deck = new Deck(32);
