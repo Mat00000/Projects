@@ -37,7 +37,7 @@ public class Client {
      */
     public Client() {
 
-        // Layout GUI
+        // Layout GUI fdfd
         messageArea.setEditable(false);
         frame.getContentPane().add(dataField, "North");
         frame.getContentPane().add(new JScrollPane(messageArea), "Center");
