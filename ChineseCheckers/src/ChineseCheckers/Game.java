@@ -2,6 +2,7 @@ package ChineseCheckers;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
@@ -32,7 +33,7 @@ public class Game extends JFrame
 	private ImageIcon original_blk, original_wht, original_yel, original_blu, original_red, original_blank, original_grn;
 	private ImageIcon current_grn, current_blk, current_wht, current_yel, current_blu, current_red;
 	private ImageIcon possible_grn, possible_blk, possible_wht, possible_yel, possible_blu, possible_red;
-	private ImageIcon point;
+	private ImageIcon dot;
 	private ImageIcon boardImage;
 	
 	public void initBoard() 
@@ -109,7 +110,7 @@ public class Game extends JFrame
     		possible_blu = new ImageIcon(getClass().getResource("/images/poss_blue.png"));
     		possible_red = new ImageIcon(getClass().getResource("/images/poss_red.png"));
 
-			point = new ImageIcon(getClass().getResource("/images/points.png"));
+			dot = new ImageIcon(getClass().getResource("/images/points.png"));
     		
 			boardImage = new ImageIcon(getClass().getResource("/images/board.jpg"));
 		}
@@ -531,7 +532,245 @@ public class Game extends JFrame
 	    }
 		
 	    
+	    // RULES
 	    
+	    public boolean isBlank(JLabel p)
+	    {
+	    	return 6 == getColorInt(p);
+	    }
+	    
+	    
+	    public boolean isCounter(JLabel p)
+	    {
+	    	return (0 <= getColorInt(p)) && (5 >= getColorInt(p));
+	    }
+	    
+	    
+	    public boolean isPossible(JLabel p)
+	    {
+	    	if(p.getIcon() == possible_blk) return true;
+	    	if(p.getIcon() == possible_blu) return true;
+	    	if(p.getIcon() == possible_grn) return true;
+	    	if(p.getIcon() == possible_red) return true;
+	    	if(p.getIcon() == possible_wht) return true;
+	    	if(p.getIcon() == possible_yel) return true;
+	    	
+	    	return false;
+	    }
+	    
+	    
+	    public boolean isPoint(JLabel p)
+	    {
+	    	if(p.getIcon() == dot) return true;
+	    	
+	    	return false;
+	    }
+	    
+	    
+	    public boolean inRange(JLabel a, JLabel b)
+	    {
+	    	return (Math.abs(a.getX() - b.getY()) + Math.abs(a.getY() - b.getY())) < 55;
+	    }
+	    
+	    
+	    public boolean isTurn(JLabel p)
+	    {
+	    	if(getColorInt(p) == currPlayer)
+	    		return true;
+	    	return false;
+	    }
+	    
+	    
+	    public boolean componentIsCounter(Component c)
+	    {
+	    	JLabel check;
+	    	
+	    	try
+	    	{
+	    		check = ((JLabel) c);
+	    	}
+	    	catch (ClassCastException e)
+	    	{
+	    		return false;
+	    	}
+	    	if(isCounter(check)) 
+	    		return true;
+	    	
+	    	return false;
+	    }
+	    
+	    
+	    public boolean isGameOver(int a, int b) 
+	    {
+	    	int count = 0;
+	    	
+	    	for(int i = 0; i < gb.length; i++)
+	    	{
+	    		if(pieceType(i) == getImage(b, 'o'))
+	    			if(gb[i].getIcon() == getImage(a, 'o'))
+	    				count++;
+	    	}
+	    	
+	    	if(count ==10)
+	    		return true;
+	    	
+	    	return false;
+	    }
+	    
+	    
+	    // JUMPS
+	    
+	    public boolean canJump(JLabel a, JLabel b)
+	    {
+	    	int distance = Math.abs(a.getX() - b.getX()) + Math.abs(a.getY() - b.getY());
+	    	
+	    	int x = a.getX() - b.getX();
+	    	int y = a.getY() - b.getY();
+	    	
+	    	int direction = 0;
+	    	
+	    	if (x > 0 && y > 0) direction = 1; 			// + +
+	    	else if (x < 0 && y > 0) direction = 2;  	// - +
+	    	else if (x < 0 && y < 0) direction = 3;  	// - -
+			else if (x > 0 && y < 0) direction = 4;  	// + -
+	    	else if (x > 0 && y == 0) direction = 5; 	// <--
+	    	else if (x < 0 && y == 0) direction = 6; 	// -->
+	    	
+	    	if(distance == 78 || distance == 106 || distance == 107 || distance == 108) {
+	    		switch (direction) {
+	    			case 1: // + +
+	    				if(componentIsCounter(getComponentAt(a.getX() - 20,
+	    				 a.getY() - 34))
+	    				|| componentIsCounter(getComponentAt(a.getX() - 19,
+	    				 a.getY() - 34)))
+	    					if (isBlank(b))
+	    						return true;
+	    				break;
+	    			case 2: // - +
+	    				if(componentIsCounter(getComponentAt(a.getX() + 20, 
+	    					a.getY() - 34))
+	    				|| componentIsCounter(getComponentAt(a.getX() + 19, 
+	    					a.getY() - 34)))
+	    					if (isBlank(b))
+	    						return true;
+	    				break;
+	    			case 3: // - -
+	    				if(componentIsCounter(getComponentAt(a.getX() + 20, 
+	    					a.getY() + 34))
+	    				|| componentIsCounter(getComponentAt(a.getX() + 19, 
+	    					a.getY() + 34)))
+	    					if (isBlank(b))
+	    						return true;
+	    				break;
+	    			case 4: // + -
+	    				if(componentIsCounter(getComponentAt(a.getX() - 20, 
+	    					a.getY() + 34))
+	    				|| componentIsCounter(getComponentAt(a.getX() - 19, 
+	    					a.getY() + 34)))
+	    					if (isBlank(b))
+	    						return true;
+	    				break;
+	    			case 5: // <--
+	    				if(componentIsCounter(getComponentAt(a.getX() - 39, 
+	    					a.getY())))
+	    					if (isBlank(b))
+	    						return true;
+	    				break;
+	    			case 6: // -->
+	    				if(componentIsCounter(getComponentAt(a.getX() + 39, 
+	    					a.getY())))
+	    					if (isBlank(b))
+	    						return true;
+	    				break;
+	    			default:
+	    				return false;
+	    		}
+	    	}
+	    	
+	    	return false;
+	    }
+	    
+	    
+	    public boolean canJumpAgain(JLabel p)
+	    {
+	    	for(int i = 0; i < gb.length; i++)
+	    	{
+	    		if(canJump(p, gb[i]))
+	    			return true;
+	    	}
+	    	
+	    	return false;
+	    }
+	    
+	    
+	    public void showPossibles(JLabel p)
+	    {
+	    	for(int i = 0; i < gb.length; i++)
+	    	{
+	    		if((canJump(p, gb[i])) && (p != gb[i]) && (!isCounter(gb[i])))
+	    			gb[i].setIcon(getImage(getColorInt(p), 'p'));
+	    	}
+	    }
+	    
+	    
+	    
+	    public ImageIcon getCounter(JLabel p)
+	    {
+	    	if (p.getIcon() == possible_grn) return original_grn;
+	    	if (p.getIcon() == possible_wht) return original_wht;
+	    	if (p.getIcon() == possible_blu) return original_blu;
+	    	if (p.getIcon() == possible_red) return original_red;
+	    	if (p.getIcon() == possible_yel) return original_yel;
+	    	if (p.getIcon() == possible_blk) return original_blk;
+	    	return null;
+	    }
+	    
+	    
+	    
+	    public ImageIcon getImage(int i, char c)
+	    {
+	    	if(c == 'o') 
+	    	{
+	    		if(i == 0) return original_grn;
+	    		else if(i == 1) return original_wht;
+	    		else if(i == 2) return original_blu;
+	    		else if(i == 3) return original_red;
+	    		else if(i == 4) return original_yel;
+	    		else if(i == 5) return original_blk;
+	    	}
+	    	
+	    	if(c == 'p')
+	    	{
+	    		if(i == 0) return possible_grn;
+	    		else if(i == 1) return possible_wht;
+	    		else if(i == 2) return possible_blu;
+	    		else if(i == 3) return possible_red;
+	    		else if(i == 4) return possible_yel;
+	    		else if(i == 5) return possible_blk;
+	    	}
+	    	
+	    	if(c == 'c')
+	    	{
+	    		if(i == 0) return current_grn;
+	    		else if(i == 1) return current_wht;
+	    		else if(i == 2) return current_blu;
+	    		else if(i == 3) return current_red;
+	    		else if(i == 4) return current_yel;
+	    		else if(i == 5) return current_blk;
+	    	}
+	    	
+	    	if(c == 'd')
+	    	{
+	    		if(i == 0) return dot;
+	    		else if(i == 1) return dot;
+	    		else if(i == 2) return dot;
+	    		else if(i == 3) return dot;
+	    		else if(i == 4) return dot;
+	    		else if(i == 5) return dot;
+	    	}
+	    	
+	    	return null;
+	    }
 		
 	}
     
