@@ -79,8 +79,10 @@ public class Game extends JFrame
 		public Board()
 		{
 			initImages();
+			
 			boardLayout = new SpringLayout();
 			setLayout(boardLayout);
+			
 			initGame();
 		}
 		
@@ -713,6 +715,29 @@ public class Game extends JFrame
 	    }
 	    
 	    
+	    // MOVES
+	    
+	    public void showMoves(JLabel p)
+	    {
+	    	for(int i = 0; i < gb.length; i++)
+	    	{
+	    		if(((inRange(p, gb[i])) || (canJump(p, gb[i])) && (p != gb[i]) && (!isCounter(gb[i])))) 
+	    			gb[i].setIcon(getImage(getColorInt(p), 'p'));
+	    	}
+	    }
+	    
+	    
+	    public void hideMoves(JLabel p)
+	    {
+	    	for(int i = 0; i < gb.length; i++)
+	    	{
+	    		if(isPossible(gb[i]))
+	    			gb[i].setIcon(original_blank);
+	    	}
+	    }
+	    
+	    
+	    // IMAGE BY CHAR
 	    
 	    public ImageIcon getCounter(JLabel p)
 	    {
@@ -771,6 +796,10 @@ public class Game extends JFrame
 	    	
 	    	return null;
 	    }
+	    
+	    
+	    
+	    
 		
 	}
     
