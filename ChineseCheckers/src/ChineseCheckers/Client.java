@@ -7,7 +7,7 @@ import java.net.Socket;
 
 import javax.swing.JOptionPane;
 
-public class Client 
+public class Client
 {
 	
     private static Socket socket;

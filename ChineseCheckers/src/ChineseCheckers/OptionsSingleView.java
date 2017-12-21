@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class OptionsSingleView
+public class OptionsSingleView extends Game
 {	
 	
 	public static int mode;
@@ -17,7 +17,6 @@ public class OptionsSingleView
 	{
 		EventQueue.invokeLater(new Runnable() 
 		{
-			
 			@Override
 			public void run() 
 			{
@@ -49,7 +48,6 @@ public class OptionsSingleView
             	
             	s2Button.addActionListener(new ActionListener() 
             	{
-					
 					@Override
 					public void actionPerformed(ActionEvent e) 
 					{
@@ -57,13 +55,11 @@ public class OptionsSingleView
 						mode = 2;
 						Game game = new Game();
 						game.initBoard();
-						
 					}
 				});
             	
             	s3Button.addActionListener(new ActionListener() 
             	{
-					
 					@Override
 					public void actionPerformed(ActionEvent e) 
 					{
@@ -71,13 +67,11 @@ public class OptionsSingleView
 						mode = 3;
 						Game game = new Game();
 						game.initBoard();
-						
 					}
 				});
             	
             	s4Button.addActionListener(new ActionListener() 
             	{
-					
 					@Override
 					public void actionPerformed(ActionEvent e) 
 					{
@@ -85,13 +79,11 @@ public class OptionsSingleView
 						mode = 4;
 						Game game = new Game();
 						game.initBoard();
-						
 					}
 				});
             	
             	s6Button.addActionListener(new ActionListener() 
             	{
-					
 					@Override
 					public void actionPerformed(ActionEvent e) 
 					{
@@ -99,13 +91,11 @@ public class OptionsSingleView
 						mode = 6;
 						Game game = new Game();
 						game.initBoard();
-						
 					}
 				});
             	
             	sBotButton.addActionListener(new ActionListener()
             	{
-					
 					@Override
 					public void actionPerformed(ActionEvent e) 
 					{
@@ -113,10 +103,8 @@ public class OptionsSingleView
 						mode = 2;
 						Game game = new Game();
 						game.initBoard();
-						
 					}
 				});
-            	
 			}
 		});
 	

@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class InitView
+public class InitView extends OptionsSingleView
 {
 	
 	public void initView() 

@@ -1,9 +1,6 @@
 package ChineseCheckers;
 
-import javax.swing.JFrame;
-
-@SuppressWarnings("serial")
-class GUI extends JFrame
+class GUI extends InitView
 {
 	GUI() 
 	{

@@ -1,77 +1,44 @@
 package ChineseCheckers;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Random;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SpringLayout;
 
-@SuppressWarnings({ "unused", "serial" })
-public class Game
-{
-	
-	public static int 	MODE_TWO_PLAYERS=2, MODE_THREE_PLAYERS=3, 
-						MODE_FOUR_PLAYERS=4, MODE_SIX_PLAYERS=6;
-	
-	
-	public void initBoard() 
-	{
-    	
-		EventQueue.invokeLater(new Runnable() 
-		{
-            @Override
-            public void run() 
-            {
-                JFrame frame = new JFrame("Chinese Checkers");
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setLayout(new BorderLayout());
-                frame.add(new Board());
-                frame.pack();
-                frame.setLocationRelativeTo(null);
-                frame.setVisible(true);	
-                frame.setResizable(false);
-            }
-        });
-	}
-	
-	
-	
-  	public class Board extends JPanel 
-  	{	
+
+@SuppressWarnings({"serial", "unused"})
+public class Board extends JPanel 
+{	
 	   	
 	   	private int BOARD_SIZE = 620;
-    	private JLabel gb [] = new JLabel[121];
-    	private JLabel gameStatus1;
-    	private JLabel gameStatus2;
-    	public JButton endTurn;
-    	
-    	private SpringLayout boardLayout;
-    	
+ 	private JLabel gb [] = new JLabel[121];
+ 	private JLabel gameStatus1;
+ 	private JLabel gameStatus2;
+ 	public JButton endTurn;
+ 	
+ 	private SpringLayout boardLayout;
+ 	
 		private ArrayList<Integer> turnOrder;
 		private HashMap<Integer, Integer> player;
-    	
-    	public int currPlayer;
-    	private int gameMode;
+ 	
+ 	public int currPlayer;
+ 	private int gameMode;
 
-    	public boolean gameStarted;
-    	public boolean gameOver;
+ 	public boolean gameStarted;
+ 	public boolean gameOver;
 
 		private ImageIcon o_grn, o_blk, o_wht, o_yel, o_blu, o_red;
 		public ImageIcon o_blank;
@@ -82,144 +49,128 @@ public class Game
 
 		private BoardMouseHandler boardMouseHandler = new BoardMouseHandler();
 
-    	private int winner;
-    	
+ 	private int winner;
+ 	
 
-    	public void initImageIcons() 
-    	{
+ 	public void initImageIcons() 
+ 	{
 
-    		o_grn = new ImageIcon(getClass().getResource("/images/o_green_34.png"));
-    		o_blk = new ImageIcon(getClass().getResource("/images/o_black_34.png"));
-    		o_wht = new ImageIcon(getClass().getResource("/images/o_white_34.png"));
-    		o_yel = new ImageIcon(getClass().getResource("/images/o_yellow_34.png"));
-    		o_blu = new ImageIcon(getClass().getResource("/images/o_blue_34.png"));
-    		o_red = new ImageIcon(getClass().getResource("/images/o_red_34.png"));
-    		o_blank = new ImageIcon(getClass().getResource("/images/o_blank_34.png"));
+ 		o_grn = new ImageIcon(getClass().getResource("/images/o_green_34.png"));
+ 		o_blk = new ImageIcon(getClass().getResource("/images/o_black_34.png"));
+ 		o_wht = new ImageIcon(getClass().getResource("/images/o_white_34.png"));
+ 		o_yel = new ImageIcon(getClass().getResource("/images/o_yellow_34.png"));
+ 		o_blu = new ImageIcon(getClass().getResource("/images/o_blue_34.png"));
+ 		o_red = new ImageIcon(getClass().getResource("/images/o_red_34.png"));
+ 		o_blank = new ImageIcon(getClass().getResource("/images/o_blank_34.png"));
 
 			s_grn = new ImageIcon(getClass().getResource("/images/s_green_34.png"));
-    		s_blk = new ImageIcon(getClass().getResource("/images/s_black_34.png"));
-    		s_wht = new ImageIcon(getClass().getResource("/images/s_white_34.png"));
-    		s_yel = new ImageIcon(getClass().getResource("/images/s_yellow_34.png"));
-    		s_blu = new ImageIcon(getClass().getResource("/images/s_blue_34.png"));
-    		s_red = new ImageIcon(getClass().getResource("/images/s_red_34.png"));
+ 		s_blk = new ImageIcon(getClass().getResource("/images/s_black_34.png"));
+ 		s_wht = new ImageIcon(getClass().getResource("/images/s_white_34.png"));
+ 		s_yel = new ImageIcon(getClass().getResource("/images/s_yellow_34.png"));
+ 		s_blu = new ImageIcon(getClass().getResource("/images/s_blue_34.png"));
+ 		s_red = new ImageIcon(getClass().getResource("/images/s_red_34.png"));
 
 			h_grn = new ImageIcon(getClass().getResource("/images/h_green_34.png"));
-    		h_blk = new ImageIcon(getClass().getResource("/images/h_black_34.png"));
-    		h_wht = new ImageIcon(getClass().getResource("/images/h_white_34.png"));
-    		h_yel = new ImageIcon(getClass().getResource("/images/h_yellow_34.png"));
-    		h_blu = new ImageIcon(getClass().getResource("/images/h_blue_34.png"));
-    		h_red = new ImageIcon(getClass().getResource("/images/h_red_34.png"));
+ 		h_blk = new ImageIcon(getClass().getResource("/images/h_black_34.png"));
+ 		h_wht = new ImageIcon(getClass().getResource("/images/h_white_34.png"));
+ 		h_yel = new ImageIcon(getClass().getResource("/images/h_yellow_34.png"));
+ 		h_blu = new ImageIcon(getClass().getResource("/images/h_blue_34.png"));
+ 		h_red = new ImageIcon(getClass().getResource("/images/h_red_34.png"));
 
 			d_grn = new ImageIcon(getClass().getResource("/images/d_green_34.png"));
-    		d_blk = new ImageIcon(getClass().getResource("/images/d_black_34.png"));
-    		d_wht = new ImageIcon(getClass().getResource("/images/d_white_34.png"));
-    		d_yel = new ImageIcon(getClass().getResource("/images/d_yellow_34.png"));
-    		d_blu = new ImageIcon(getClass().getResource("/images/d_blue_34.png"));
-    		d_red = new ImageIcon(getClass().getResource("/images/d_red_34.png"));
+ 		d_blk = new ImageIcon(getClass().getResource("/images/d_black_34.png"));
+ 		d_wht = new ImageIcon(getClass().getResource("/images/d_white_34.png"));
+ 		d_yel = new ImageIcon(getClass().getResource("/images/d_yellow_34.png"));
+ 		d_blu = new ImageIcon(getClass().getResource("/images/d_blue_34.png"));
+ 		d_red = new ImageIcon(getClass().getResource("/images/d_red_34.png"));
 
-    		board = new ImageIcon(getClass().getResource("/images/board.jpg"));
-    		
-    	} 
-    	
-    	
-        public void setTurnOrder()
-    	{
-        	
-    		switch(OptionsSingleView.mode)
-    		{
-    		
-   			case 2:
-   				int tab2[] = {0, 3};
-   				int curr2 = (int) Math.floor(Math.random()*2);
-   				
-   				currPlayer = tab2[curr2];
-   				gameMode = MODE_TWO_PLAYERS;
-    				
-   				player.put(0,3);
-    			player.put(3,0);
+ 		board = new ImageIcon(getClass().getResource("/images/board.jpg"));
+ 		
+ 	} 
+ 	
+ 	
+    public void setTurnOrder()
+  	{
+      	
+  		switch(OptionsSingleView.mode)
+  		{
+  		
+ 			case 2:
+ 				int tab2[] = {0, 3};
+ 				int curr2 = (int) Math.floor(Math.random()*2);
+ 				
+ 				currPlayer = tab2[curr2];
+ 				gameMode = Game.MODE_TWO_PLAYERS;
+  				
+ 				player.put(0,3);
+  			player.put(3,0);
 
-    			turnOrder.add(0);
-    			turnOrder.add(3);
-    			break;
-    				
-   			case 3:
-   				int tab3[] = {0, 2, 4};
-   				int curr3 = (int) Math.floor(Math.random()*3);
-   				
-   				currPlayer = tab3[curr3];
-   				gameMode = MODE_THREE_PLAYERS;
-    				
-    			player.put(0,2);
-    			player.put(2,4);
-    			player.put(4,0);
+  			turnOrder.add(0);
+  			turnOrder.add(3);
+  			break;
+  				
+ 			case 3:
+ 				int tab3[] = {0, 2, 4};
+ 				int curr3 = (int) Math.floor(Math.random()*3);
+ 				
+ 				currPlayer = tab3[curr3];
+ 				gameMode = Game.MODE_THREE_PLAYERS;
+  				
+  			player.put(0,2);
+  			player.put(2,4);
+  			player.put(4,0);
 
-    			turnOrder.add(0);
-    			turnOrder.add(2);
-    			turnOrder.add(4);
-    			break;
-    				
-    		case 4:
-    			int tab4[] = {0, 2, 3, 5};
-   				int curr4 = (int) Math.floor(Math.random()*4);
-    			
-    			currPlayer = tab4[curr4];
-    			gameMode = MODE_FOUR_PLAYERS;
-   				
-   				player.put(0,3);
-   				player.put(2,5);
-   				player.put(3,0);
-   				player.put(5,2);
+  			turnOrder.add(0);
+  			turnOrder.add(2);
+  			turnOrder.add(4);
+  			break;
+  				
+  		case 4:
+  			int tab4[] = {0, 2, 3, 5};
+ 				int curr4 = (int) Math.floor(Math.random()*4);
+  			
+  			currPlayer = tab4[curr4];
+  			gameMode = Game.MODE_FOUR_PLAYERS;
+ 				
+ 				player.put(0,3);
+ 				player.put(2,5);
+ 				player.put(3,0);
+ 				player.put(5,2);
 
-    			turnOrder.add(0);
-    			turnOrder.add(2);
-    			turnOrder.add(3);
-   				turnOrder.add(5);
-    			break;
-    				
-    		case 6:
-    			int tab6[] = {0, 1, 2, 3, 4, 5};
-   				int curr6 = (int) Math.floor(Math.random()*6);
-    			
-    			currPlayer = tab6[curr6];
-    			gameMode = MODE_SIX_PLAYERS;
-    			
-    			player.put(0,3);
-    			player.put(1,4);
-    			player.put(2,5);
-    			player.put(3,0);
-    			player.put(4,1);
-    			player.put(5,2);   
+  			turnOrder.add(0);
+  			turnOrder.add(2);
+  			turnOrder.add(3);
+ 				turnOrder.add(5);
+  			break;
+  				
+  		case 6:
+  			int tab6[] = {0, 1, 2, 3, 4, 5};
+ 				int curr6 = (int) Math.floor(Math.random()*6);
+  			
+  			currPlayer = tab6[curr6];
+  			gameMode = Game.MODE_SIX_PLAYERS;
+  			
+  			player.put(0,3);
+  			player.put(1,4);
+  			player.put(2,5);
+  			player.put(3,0);
+  			player.put(4,1);
+  			player.put(5,2);   
 
-   				turnOrder.add(0);
-   				turnOrder.add(1);
-   				turnOrder.add(2);
-   				turnOrder.add(3);
-   				turnOrder.add(4);
-   				turnOrder.add(5);
-    				
-   				break;
-    				
-   			default:
-   				break;
-    		}
-    	}
+ 				turnOrder.add(0);
+ 				turnOrder.add(1);
+ 				turnOrder.add(2);
+ 				turnOrder.add(3);
+ 				turnOrder.add(4);
+ 				turnOrder.add(5);
+  				
+ 				break;
+  				
+ 			default:
+ 				break;
+  		}
+  	}
 
-	    
-	    
-	    // CONSTRUCTOR
-	    public Board() 
-	    {
-	    	
-	    	initImageIcons();
-        	boardLayout = new SpringLayout();
-	        setLayout(boardLayout);
-	        initGame();
-
-	    } 
-
-	    
-	    
-	    // INITS
 	    public void initGame() 
 	    {
 	    	
@@ -232,9 +183,19 @@ public class Game
 	    	setTurnOrder();
 	    	buildTurnInfo();
 	    	buildBoard();
-	    	endGame();
+
 	    }
 	    
+	    public Board() 
+	    {
+	    	
+	    	initImageIcons();
+     	boardLayout = new SpringLayout();
+	        setLayout(boardLayout);
+	        initGame();
+
+	    } 
+
 	    
 	    public void updatePlayer(int i) {
 	    	switch(i) {
@@ -272,8 +233,8 @@ public class Game
 	    	gameStatus1 = new JLabel();
 	    	gameStatus2 = new JLabel();
 	    	
-        	gameStatus1.setFont(new Font("Tahoma", Font.BOLD, 30));
-        	gameStatus2.setFont(new Font("Tahoma", Font.BOLD, 30));
+     	gameStatus1.setFont(new Font("Tahoma", Font.BOLD, 30));
+     	gameStatus2.setFont(new Font("Tahoma", Font.BOLD, 30));
 
 			updatePlayer(currPlayer);
 	    		
@@ -295,21 +256,21 @@ public class Game
 	        endTurn = new JButton("END TURN");
 	    	
 	    	endTurn.setPreferredSize(new Dimension(155, 35));
-        	endTurn.setFocusPainted(false);
-        	endTurn.setMargin(new Insets(0,0,0,0));
-        	endTurn.setFont(new Font("Tahoma", Font.BOLD, 25));
+     	endTurn.setFocusPainted(false);
+     	endTurn.setMargin(new Insets(0,0,0,0));
+     	endTurn.setFont(new Font("Tahoma", Font.BOLD, 25));
 	    	endTurn.addMouseListener(boardMouseHandler);
 	    	endTurn.setBackground(new Color(59, 89, 182));
-    		endTurn.setForeground(Color.WHITE);
+ 		endTurn.setForeground(Color.WHITE);
 
 			boardLayout.putConstraint(SpringLayout.SOUTH, endTurn, 
 				-10, SpringLayout.SOUTH, this);
 	        boardLayout.putConstraint(SpringLayout.EAST, endTurn, 
 	        	-10, SpringLayout.EAST, this);
 	        
-    		add(endTurn);
+ 		add(endTurn);
 
-    		endTurn.setVisible(true);
+ 		endTurn.setVisible(true);
 	    	gameStatus1.setVisible(true);
 	    	gameStatus2.setVisible(true);
 
@@ -318,11 +279,11 @@ public class Game
 
 	    public void buildBoard() {
 
-        	for (int i = 0; i < gb.length; i++) {
-        		gb[i] = new JLabel(pieceType(i));
-            	gb[i].addMouseListener(boardMouseHandler);
-        		add(gb[i]);
-        	}
+     	for (int i = 0; i < gb.length; i++) {
+     		gb[i] = new JLabel(pieceType(i));
+         	gb[i].addMouseListener(boardMouseHandler);
+     		add(gb[i]);
+     	}
 
 	        int SIZE = 34;
 	        int BELOW = 0;
@@ -544,9 +505,6 @@ public class Game
 	         OFFSET, SpringLayout.WEST, gb[118]);
 	    } 
 	    
-	    
-	    
-	    // SHOWING MOVEMENTS
 	    public void showMoves(JLabel p) 
 	    {
 	    	for (int i = 0; i < gb.length; i++) 
@@ -558,7 +516,6 @@ public class Game
 	    	}
 	    }
 
-	    
 	    public void hideMoves(JLabel p) 
 	    {
 	    	for (int i = 0; i < gb.length; i++) 
@@ -569,51 +526,42 @@ public class Game
 	    	}
 	    }
 
-	    
-	    
-	    // RULES
 	    public boolean isBlank(JLabel p) { 
 	    	return 6 == getColorInt(p); 
 	    } 
 
-	   
 	    public boolean isMarble(JLabel p) 
 	    { 
 	    	return 0 <= getColorInt(p) && 5 >= getColorInt(p); 
 	    } 
-	   
-
 	    public boolean isHighlight(JLabel p) 
 	    {
-    		if(p.getIcon() == h_grn) return true;
-    		if(p.getIcon() == h_wht) return true;
-    		if(p.getIcon() == h_blu) return true;
-    		if(p.getIcon() == h_red) return true;
-    		if(p.getIcon() == h_yel) return true;
-    		if(p.getIcon() == h_blk) return true;
+ 		if(p.getIcon() == h_grn) return true;
+ 		if(p.getIcon() == h_wht) return true;
+ 		if(p.getIcon() == h_blu) return true;
+ 		if(p.getIcon() == h_red) return true;
+ 		if(p.getIcon() == h_yel) return true;
+ 		if(p.getIcon() == h_blk) return true;
 	    	return false;
 	    }
-	    
 	    
 	    public boolean isDot(JLabel p) 
 	    {
-    		if(p.getIcon() == d_grn) return true;
-    		if(p.getIcon() == d_wht) return true;
-    		if(p.getIcon() == d_blu) return true;
-    		if(p.getIcon() == d_red) return true;
-    		if(p.getIcon() == d_yel) return true;
-    		if(p.getIcon() == d_blk) return true;
+ 		if(p.getIcon() == d_grn) return true;
+ 		if(p.getIcon() == d_wht) return true;
+ 		if(p.getIcon() == d_blu) return true;
+ 		if(p.getIcon() == d_red) return true;
+ 		if(p.getIcon() == d_yel) return true;
+ 		if(p.getIcon() == d_blk) return true;
 	    	return false;
 	    }
 
-	    
 	    public boolean inRange(JLabel s, JLabel e) 
 	    {
 	    	return (Math.abs(s.getX() - e.getX()) 
 	    		  + Math.abs(s.getY() - e.getY())) < 55;
 	    }
 
-	    
 	    public boolean isTurn(JLabel s) 
 	    {
 	    	if (getColorInt(s) == currPlayer)
@@ -621,7 +569,6 @@ public class Game
 	    	return false;
 	    }
 
-	    
 	    public boolean compIsMarble(Component c) 
 	    {
 			JLabel tmp;
@@ -638,7 +585,6 @@ public class Game
 			return false;			
 	    }
 
-	    
 	    public boolean isGameOver(int a, int b)
 	    {
 	    	int count = 0;
@@ -655,7 +601,6 @@ public class Game
 	    	return false;	    		
 	    }
 
-	    
 	   	public boolean canJump(JLabel s, JLabel e) 
 	   	{
 	      	int total = Math.abs(s.getX() - e.getX()) 
@@ -729,7 +674,6 @@ public class Game
 	    	return false;
 	    } 
 
-	   	
 	   	public boolean canJumpAgain(JLabel p) {
 	    	for (int i = 0; i < gb.length; i++)
 	    		if(canJump(p, gb[i]))
@@ -737,7 +681,6 @@ public class Game
 	    	return false;
 	    } 
 
-	   	
 	   	public void showJumps(JLabel p) {
 	    	for (int i = 0; i < gb.length; i++) {
 	    		if(canJump(p, gb[i]) && p != gb[i] && !isMarble(gb[i]))
@@ -745,7 +688,6 @@ public class Game
 	    	}
 	    } 
 
-	   	
 	    public int getColorInt(JLabel p) {
 	    	if (p.getIcon() == o_grn || p.getIcon() == s_grn) return 0;
 	    	if (p.getIcon() == o_wht || p.getIcon() == s_wht) return 1;
@@ -758,9 +700,6 @@ public class Game
 	    	return 7;
 	    } 
 
-	    
-	    
-	    // IMAGES VOIDS
 	    public ImageIcon pieceType(int index) 
 	    {
 
@@ -771,7 +710,7 @@ public class Game
 		    int blu_arr [] = {74, 84, 85, 95, 96, 97, 107, 108, 109, 110};
 		    int red_arr [] = {111, 112, 113, 114, 115, 116, 117, 118, 119, 120};
 		    
-		    if(OptionsSingleView.mode==MODE_TWO_PLAYERS)
+		    if(OptionsSingleView.mode == Game.MODE_TWO_PLAYERS)
 		    {
 			    for (int i = 0; i < 10; i++) 
 			    {
@@ -782,7 +721,7 @@ public class Game
 			    }
 		    }
 		    
-		    if(OptionsSingleView.mode==MODE_THREE_PLAYERS)
+		    if(OptionsSingleView.mode == Game.MODE_THREE_PLAYERS)
 		    {
 		    	for (int i = 0; i < 10; i++) 
 			    {
@@ -795,7 +734,7 @@ public class Game
 			    }
 		    }
 		    
-		    if(OptionsSingleView.mode==MODE_FOUR_PLAYERS)
+		    if(OptionsSingleView.mode == Game.MODE_FOUR_PLAYERS)
 		    {
 		    	for (int i = 0; i < 10; i++) 
 			    {
@@ -810,7 +749,7 @@ public class Game
 			    }
 		    }
 		    
-		    if(OptionsSingleView.mode==MODE_SIX_PLAYERS)
+		    if(OptionsSingleView.mode == Game.MODE_SIX_PLAYERS)
 		    {
 		    	for (int i = 0; i < 10; i++) 
 			    {
@@ -831,7 +770,6 @@ public class Game
 		    
 		    return o_blank;
 	    }
-	    
 	    
 	    public ImageIcon getImageIcon(int i, char c) 
 	    {
@@ -884,7 +822,6 @@ public class Game
 			return null;
 	    } 
 
-	    
 	    public ImageIcon getMarble(JLabel p) 
 	    {
 	    	if (p.getIcon() == s_grn) return o_grn;
@@ -916,43 +853,31 @@ public class Game
 
 	  		updatePlayer(currPlayer);
 
-        	if(isGameOver(currPlayer, player.get(currPlayer))) 
-        	{
-        		winner = currPlayer;
-        		gameOver = true;
-        	}	  		
+     	if(isGameOver(currPlayer, player.get(currPlayer))) 
+     	{
+     		winner = currPlayer;
+     		System.out.printf("Player %d Wins!!!\n", winner);
+     		String message = " WIN ";
+     		JOptionPane.showMessageDialog(null, message);
+     		gameOver = true;
+     	}	  		
 	  	} 
-	  	
-	  	
-	  	public void endGame()
-	  	{
-	  		if(gameOver)
-	  		{
-	  			System.out.printf("Player %d Wins!!!\n", winner);
-        		String message = " WIN ";
-        		JOptionPane.showMessageDialog(null, message);
-	  		}
-	  	}
-	  	
-	  	
-	  	// OVERRIDE
+
 	    @Override
 		protected void paintComponent(Graphics g) 
 	    {
-    		super.paintComponent(g);
-        	g.drawImage(board.getImage(), 0, 0, null);
+ 		super.paintComponent(g);
+     	g.drawImage(board.getImage(), 0, 0, null);
 		}
 
 	    
 	    @Override
-        public Dimension getPreferredSize() 
+     public Dimension getPreferredSize() 
 	    {
-            return new Dimension(BOARD_SIZE, BOARD_SIZE);
-        }
+         return new Dimension(BOARD_SIZE, BOARD_SIZE);
+     }
 
 	    
-	    
-	    // MOUSE
 		class BoardMouseHandler implements MouseListener 
 		{
 
@@ -991,14 +916,13 @@ public class Game
 	        	if (event.getSource() == endTurn) 
 	        	{
 					hasJumped = false;
-        			jumping = null;
-        			firstMoved = null;
+     			jumping = null;
+     			firstMoved = null;
 	        		turnOver();	
 				}
 
 	        } 
 
-	        
 	        public void mouseReleased( MouseEvent event ) 
 	        {
 	        	
@@ -1085,4 +1009,3 @@ public class Game
 
 	
 	} 
-}
