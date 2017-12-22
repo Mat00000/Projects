@@ -15,12 +15,13 @@ public class Client
     
 	public static void main(String[] args) throws Exception 
     {
-        Client.connectToServer();
+		Client client = new Client();
+        client.connectToServer();
         new GUI();
     }
     
 	
-	private static void connectToServer() throws IOException 
+	private void connectToServer() throws IOException 
     {
     	// IPAdress Universal "127.0.0.1"
         String serverAddress = JOptionPane.showInputDialog("Enter IPAdress to connect to Server");

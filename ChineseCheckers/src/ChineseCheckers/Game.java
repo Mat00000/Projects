@@ -232,7 +232,6 @@ public class Game
 	    	setTurnOrder();
 	    	buildTurnInfo();
 	    	buildBoard();
-	    	endGame();
 	    }
 	    
 	    
@@ -918,21 +917,34 @@ public class Game
 
         	if(isGameOver(currPlayer, player.get(currPlayer))) 
         	{
-        		winner = currPlayer;
-        		gameOver = true;
+        		endGame();
         	}	  		
 	  	} 
 	  	
 	  	
 	  	public void endGame()
 	  	{
-	  		if(gameOver)
-	  		{
-	  			System.out.printf("Player %d Wins!!!\n", winner);
-        		String message = " WIN ";
-        		JOptionPane.showMessageDialog(null, message);
-	  		}
+	  		winner = currPlayer;
+    		gameOver = true;
+    		String colorPlayer;
+    		
+    		if(winner == 0) colorPlayer = "GREEN";
+    		else if(winner == 1) colorPlayer = "WHITE";
+    		else if(winner == 2) colorPlayer = "BLUE";
+    		else if(winner == 3) colorPlayer = "RED";
+    		else if(winner == 4) colorPlayer = "YELLOW";
+    		else if(winner == 5) colorPlayer = "BLACK";
+    		else colorPlayer = "";
+    		
+  			System.out.printf("Player %d Wins!!!\n", winner);
+    		String message = ("Player" + colorPlayer + "wins! EXIT?");
+    		
+    		int x =JOptionPane.showConfirmDialog(null, message, "Do you want to go?", JOptionPane.YES_NO_OPTION);
+    		
+    		if(JOptionPane.YES_OPTION == x)
+    			System.exit(-1);
 	  	}
+	  	
 	  	
 	  	
 	  	// OVERRIDE
