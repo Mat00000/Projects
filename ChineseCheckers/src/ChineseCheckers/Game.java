@@ -30,6 +30,9 @@ public class Game
 	public static int 	MODE_TWO_PLAYERS=2, MODE_THREE_PLAYERS=3, 
 						MODE_FOUR_PLAYERS=4, MODE_SIX_PLAYERS=6;
 	
+	public static Board board = null;
+	public static int currPlayer = -1;
+	
 	
 	public void initBoard() 
 	{
@@ -39,10 +42,12 @@ public class Game
             @Override
             public void run() 
             {
+            	board = new Board();
+            	
                 JFrame frame = new JFrame("Chinese Checkers");
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setLayout(new BorderLayout());
-                frame.add(new Board());
+                frame.add(board);
                 frame.pack();
                 frame.setLocationRelativeTo(null);
                 frame.setVisible(true);	
@@ -67,7 +72,6 @@ public class Game
 		private ArrayList<Integer> turnOrder;
 		private HashMap<Integer, Integer> player;
     	
-    	public int currPlayer;
     	private int gameMode;
 
     	public boolean gameStarted;
@@ -132,7 +136,7 @@ public class Game
    				int tab2[] = {0, 3};
    				int curr2 = (int) Math.floor(Math.random()*2);
    				
-   				currPlayer = tab2[curr2];
+   				Game.currPlayer = tab2[curr2];
    				gameMode = MODE_TWO_PLAYERS;
     				
    				player.put(0,3);
@@ -146,7 +150,7 @@ public class Game
    				int tab3[] = {0, 2, 4};
    				int curr3 = (int) Math.floor(Math.random()*3);
    				
-   				currPlayer = tab3[curr3];
+   				Game.currPlayer = tab3[curr3];
    				gameMode = MODE_THREE_PLAYERS;
     				
     			player.put(0,2);
@@ -162,7 +166,7 @@ public class Game
     			int tab4[] = {0, 2, 3, 5};
    				int curr4 = (int) Math.floor(Math.random()*4);
     			
-    			currPlayer = tab4[curr4];
+    			Game.currPlayer = tab4[curr4];
     			gameMode = MODE_FOUR_PLAYERS;
    				
    				player.put(0,3);
@@ -180,7 +184,7 @@ public class Game
     			int tab6[] = {0, 1, 2, 3, 4, 5};
    				int curr6 = (int) Math.floor(Math.random()*6);
     			
-    			currPlayer = tab6[curr6];
+    			Game.currPlayer = tab6[curr6];
     			gameMode = MODE_SIX_PLAYERS;
     			
     			player.put(0,3);
@@ -274,7 +278,7 @@ public class Game
         	gameStatus1.setFont(new Font("Tahoma", Font.BOLD, 30));
         	gameStatus2.setFont(new Font("Tahoma", Font.BOLD, 30));
 
-			updatePlayer(currPlayer);
+			updatePlayer(Game.currPlayer);
 	    		
 	    	gameStatus2.setText("TURN"); 
 
@@ -615,7 +619,7 @@ public class Game
 	    
 	    public boolean isTurn(JLabel s) 
 	    {
-	    	if (getColorInt(s) == currPlayer)
+	    	if (getColorInt(s) == Game.currPlayer)
 	    		return true;
 	    	return false;
 	    }
@@ -902,20 +906,20 @@ public class Game
 	  		int currIndex = 0;
 
 	  		for (int i = 0; i < turnOrder.size(); i++)
-	  			if (turnOrder.get(i) == currPlayer)
+	  			if (turnOrder.get(i) == Game.currPlayer)
 	  				currIndex = i;
 
 	  		if (gameMode > 3)
 		  		if (currIndex == turnOrder.size()-1)
-		  			currPlayer = turnOrder.get(0);
+		  			Game.currPlayer = turnOrder.get(0);
 		  		else 
-		  			currPlayer = turnOrder.get(currIndex+1);
+		  			Game.currPlayer = turnOrder.get(currIndex+1);
 	  		else
-	  			currPlayer = player.get(currPlayer);
+	  			Game.currPlayer = player.get(Game.currPlayer);
 
-	  		updatePlayer(currPlayer);
+	  		updatePlayer(Game.currPlayer);
 
-        	if(isGameOver(currPlayer, player.get(currPlayer))) 
+        	if(isGameOver(Game.currPlayer, player.get(Game.currPlayer))) 
         	{
         		endGame();
         	}	  		
@@ -924,7 +928,7 @@ public class Game
 	  	
 	  	public void endGame()
 	  	{
-	  		winner = currPlayer;
+	  		winner = Game.currPlayer;
     		gameOver = true;
     		String colorPlayer;
     		
@@ -1071,7 +1075,7 @@ public class Game
 		        	if (isHighlight((JLabel) event.getSource())) 
 		        	{
 		        		end = (JLabel) event.getSource();
-		        		end.setIcon(getImageIcon(currPlayer, 'd'));
+		        		end.setIcon(getImageIcon(Game.currPlayer, 'd'));
 		        	}
 		        }		
 	        } 
@@ -1083,7 +1087,7 @@ public class Game
 	        	{
 		        	JLabel tmp = (JLabel) event.getSource();
 		        	if (isDot(tmp))
-		        		end.setIcon(getImageIcon(currPlayer, 'h'));
+		        		end.setIcon(getImageIcon(Game.currPlayer, 'h'));
 		        }
 	        } 
 	        

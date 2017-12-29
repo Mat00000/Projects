@@ -53,7 +53,9 @@ public class InitView extends OptionsSingleView
 					@Override
 					public void actionPerformed(ActionEvent e) 
 					{
-						// Nothing
+						framestart.setVisible(false);
+						OptionsMultiView omv = new OptionsMultiView();
+						omv.initMultiView();
 					}
 				});
 				 
