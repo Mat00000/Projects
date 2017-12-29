@@ -28,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="ChineseCheckers.Server" project="ChineseCheckers" 
-    file="/ChineseCheckers/src/ChineseCheckers/Server.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="ChineseCheckers.OldServer" project="ChineseCheckers" 
+    file="/ChineseCheckers/src/ChineseCheckers/OldServer.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="135" width="141" x="686" y="46"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -64,8 +64,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="ChineseCheckers.Client" project="ChineseCheckers" 
-    file="/ChineseCheckers/src/ChineseCheckers/Client.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="8" language="java" name="ChineseCheckers.OldClient" project="ChineseCheckers" 
+    file="/ChineseCheckers/src/ChineseCheckers/OldClient.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="135" width="140" x="475" y="47"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -74,38 +74,38 @@
     </display>  
   </class>  
   <generalization id="9">    
-    <end type="SOURCE" refId="5"/>    
-    <end type="TARGET" refId="6"/>  
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
   </generalization>  
-  <nesting id="10">    
-    <bendpoint x="414" y="765"/>    
-    <end type="SOURCE" refId="2"/>    
-    <end type="TARGET" refId="1"/>  
-  </nesting>  
-  <nesting id="11">    
-    <end type="SOURCE" refId="3"/>    
-    <end type="TARGET" refId="2"/>  
-  </nesting>  
-  <association id="12">    
+  <association id="10">    
     <end type="SOURCE" refId="2" navigable="false">      
-      <attribute id="13" name="boardMouseHandler">        
+      <attribute id="11" name="boardMouseHandler">        
         <position height="0" width="0" x="381" y="-933"/>      
       </attribute>      
-      <multiplicity id="14" minimum="0" maximum="1">        
+      <multiplicity id="12" minimum="0" maximum="1">        
         <position height="0" width="0" x="381" y="-933"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="1" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="15">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="3"/>  
+  <generalization id="13">    
+    <end type="SOURCE" refId="5"/>    
+    <end type="TARGET" refId="6"/>  
   </generalization>  
-  <generalization id="16">    
+  <nesting id="14">    
+    <bendpoint x="414" y="765"/>    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="1"/>  
+  </nesting>  
+  <generalization id="15">    
     <end type="SOURCE" refId="6"/>    
     <end type="TARGET" refId="7"/>  
   </generalization>  
+  <nesting id="16">    
+    <end type="SOURCE" refId="3"/>    
+    <end type="TARGET" refId="2"/>  
+  </nesting>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     sort-features="false" accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    

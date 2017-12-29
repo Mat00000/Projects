@@ -6,10 +6,10 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-class Player extends Thread {
+class OldPlayer extends Thread {
 	private int playerId = -1;
-	private Client client;
-	Player opponent;
+	private OldClient client;
+	OldPlayer opponent;
 	Socket socket;
 	BufferedReader input;
 	PrintWriter output;
@@ -18,7 +18,7 @@ class Player extends Thread {
 	 * Constructs a handler thread for a given socket and mark initializes the
 	 * stream fields, displays the first two welcoming messages.
 	 */
-	public Player(Socket socket, int playerId) {
+	public OldPlayer(Socket socket, int playerId) {
 		this.socket = socket;
 		this.setPlayerId(playerId);
 
@@ -38,7 +38,7 @@ class Player extends Thread {
 	/**
 	 * Accepts notification of who the opponent is.
 	 */
-	public void setOpponent(Player opponent) {
+	public void setOpponent(OldPlayer opponent) {
 		this.opponent = opponent;
 	}
 
@@ -71,11 +71,11 @@ class Player extends Thread {
 		return this.playerId;
 	}
 
-	public void setClient(Client client) {
+	public void setClient(OldClient client) {
 		this.client = client;
 	}
 
-	public Client getClient() {
+	public OldClient getClient() {
 		return this.client;
 	}
 
