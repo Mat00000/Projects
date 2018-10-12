@@ -26,11 +26,11 @@ import java.util.Scanner;
             return;
         }  
         
+        
+        // Obliczanie tablicy next
         next[0] = 0;
         next[1] = 0;
         x = 0;
-
-        // Obliczanie tablicy next
         for(i = 2; i <= w; i++) {
             while(x > 0 && wzorzec.charAt(x) != wzorzec.charAt(i-1)) {
                 x = next[x];
@@ -55,6 +55,7 @@ import java.util.Scanner;
             }
             i = i+Math.max(1, j-next[j]);
         }
+
         if(stan) {
             System.out.println("TRUE");
             return;
