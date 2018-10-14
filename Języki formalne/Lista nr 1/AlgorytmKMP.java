@@ -9,7 +9,7 @@ import java.util.Scanner;
     public static void main(String[] args) {
         String wzorzec, tekst_wejsciowy;
         int t,w,x,i,j;
-        int next[] = new int[5];
+        int next[] = new int[100];
         boolean stan = false;
 
         Scanner scanner = new Scanner(System.in);
@@ -25,6 +25,8 @@ import java.util.Scanner;
             System.out.printf("ERROR: Max length wzorzec -> %d", next.length);
             return;
         }  
+
+        tekst_wejsciowy = tekst_wejsciowy.replaceAll(" ", "");
         
         
         // Obliczanie tablicy next
