@@ -26,7 +26,7 @@ import java.util.Scanner;
             return;
         }  
 
-        tekst_wejsciowy = tekst_wejsciowy.replaceAll(" ", "");
+        // kst_wejsciowy = tekst_wejsciowy.replaceAll(" ", "");
         
         
         // Obliczanie tablicy next
