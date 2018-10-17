@@ -142,10 +142,10 @@ end
 
 temp = Float32(max / 2)                                     
 while (isinf(Float32(max)) == false)                        # dopuki zmienna max nie jest infinity wykonuj
-    if (isinf(Float32(max + temp)) == false)
+    if (isinf(Float32(max + temp)) == false)                # jeżeli prawda to znaczy że następne dodanie max+temp wyjdzie poza pamięć, więc przerywamy z aktualnym maxem
         max = Float32(max + temp);
         temp = Float32(temp / 2);
-    else                                                    # jeżeli prawda to znaczy że następne dodanie max+temp wyjdzie poza pamięć, więc przerywamy z aktualnym maxem
+    else                                                    
         break
     end
 end
