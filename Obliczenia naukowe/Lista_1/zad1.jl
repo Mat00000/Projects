@@ -47,6 +47,7 @@ end
 
 print("I Float64 -> ");
 println(epsilon);
+println("float.h\nFLT_EPSILON 1.19209290e-07F\nDBL_EPSILON 2.2204460492503131e-16\nLDBL_EPSILON 1.084202172485504434007452e-19L");
 println();
 
 ################# LICZBA ETA #################
@@ -100,6 +101,21 @@ println();
 ################# LICZBA (MAX) #################
 println("[3] - Program wyznaczający iteracyjnie liczbę (MAX)");
 
+# Dla Float16
+print("F Float16 -> ");
+println(realmax(Float16));
 
+
+# Dla Float32
+print("F Float32 -> ");
+println(realmax(Float32));
+
+
+# Dla Float64
+print("F Float64 -> ");
+println(realmax(Float64));
+
+
+println("float.h\nFLT_MAX 3.402823e+38\nDBL_MAX 1.797693e+308\nLDBL_MAX 1.189731e+4932");
 
 
