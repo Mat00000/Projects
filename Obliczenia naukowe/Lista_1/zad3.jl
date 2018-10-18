@@ -15,3 +15,4 @@ while (Float64(x) <= Float64(p2))                                   # dopuki x j
         println("Delta różna od ", delta, " dla x = ", x, " => delta' = ", x - prevfloat(x))
     end
 end
+
