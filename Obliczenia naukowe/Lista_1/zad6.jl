@@ -6,7 +6,7 @@
 i = 1;                                                                      # zmienna indeksowana
 f = Float64(0.0);                                                           # zmienna, której przypisze się wartości funckji f
 g = Float64(0.0);                                                           # zmienna, której przypisze się wartości funckji g
-while (i < 20)
+while (i < 180)
     x = Float64((1/8)^i);                                                   # zmienna 8^-i
     @printf("x = %e", x);
     println();

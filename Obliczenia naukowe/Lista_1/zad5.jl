@@ -16,7 +16,7 @@ for i = 1 : n
     S = Float32(S) + Float32(x[i] * y[i]);
     # println("S w petli ", S);
 end
-println("WYNIK w przód S = ", S);
+println("WYNIK w przód  S = ", S);
 
 # Podpunkt B
 S = Float32(0.0);
@@ -26,7 +26,7 @@ while (i > 0 )
     # println("S w petli ", S);
     i = i - 1;
 end
-println("WYNIK w tył S = ", S);
+println("WYNIK w tył    S = ", S);
 
 # Podpunkt C
 S = Float32(0.0);
@@ -81,6 +81,8 @@ S = Float32(S_minus + S_plus);
 println("WYNIK w podp.D S = ", S);
 
 ################# FLOAT64 #################
+x = [Float64(2.718281828), Float64(-3.141592654), Float64(1.414213562), Float64(0.5772156649), Float64(0.3010299957)];              # tablica wektorów współ. X 
+y = [Float64(1486.2497), Float64(878366.9879), Float64(-22.37492), Float64(4773714.647), Float64(0.000185049)];  
 println("-- FLOAT64 --");
 # Podpunkt A
 S = Float64(0.0);
@@ -88,7 +90,7 @@ for i = 1 : n
     S = Float64(S) + Float64(x[i] * y[i]);
     # println("S w petli ", S);
 end
-println("WYNIK w przód S = ", S);
+println("WYNIK w przód  S = ", S);
 
 # Podpunkt B
 S = Float64(0.0);
@@ -98,7 +100,7 @@ while (i > 0 )
     # println("S w petli ", S);
     i = i - 1;
 end
-println("WYNIK w tył S = ", S);
+println("WYNIK w tył    S = ", S);
 
 # Podpunkt C
 S = Float64(0.0);
