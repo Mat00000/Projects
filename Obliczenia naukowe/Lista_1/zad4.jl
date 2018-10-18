@@ -3,7 +3,6 @@
 =#
 
 ################# ZNAJDŹ LICZBĘ W FLOAT64 #################
-
 # Podpunkt A
 println("Podpunkt A");
 
