@@ -36,7 +36,7 @@ for i = 1 : n
 end
 
 sort!(Array);
-# println(Array);
+println(Array);
 
 i = 5;
 S_plus = Float32(0.0);
@@ -53,7 +53,15 @@ while (i > 0)
 end
 
 S = Float32(S_plus + S_minus);
-println("WYNIK w podp.C S = ", S);
+println("WYNIK z TABLICY w podp.C S = ", S);
+SUMA = Float32(0.0);
+SUMA = SUMA + Float32(x[4]*y[4]);
+SUMA = SUMA + Float32(x[1]*y[1]);
+SUMA = SUMA + Float32(x[5]*y[5]);
+SUMA = SUMA + Float32(x[3]*y[3]);
+SUMA = SUMA + Float32(x[2]*y[2]);
+println("SUMA POPRAWNA podp. C S = ", SUMA);
+
 
 # Podpunkt D
 S = Float32(0.0);
@@ -63,7 +71,7 @@ for i = 1 : n
 end
 
 sort!(Array);
-# println(Array);
+println(Array);
 
 i = 1
 S_plus = Float32(0.0);
@@ -78,7 +86,7 @@ while (i <= n)
 end
 
 S = Float32(S_minus + S_plus);
-println("WYNIK w podp.D S = ", S);
+println("WYNIK Z TABLICY w podp.D S = ", S);
 
 ################# FLOAT64 #################
 x = [Float64(2.718281828), Float64(-3.141592654), Float64(1.414213562), Float64(0.5772156649), Float64(0.3010299957)];              # tablica wektorów współ. X 
@@ -110,7 +118,7 @@ for i = 1 : n
 end
 
 sort!(Array);
-# println(Array);
+println(Array);
 
 i = 5;
 S_plus = Float64(0.0);
@@ -127,8 +135,21 @@ while (i > 0)
 end
 
 S = Float64(S_plus + S_minus);
-println("WYNIK w podp.C S = ", S);
-
+println("WYNIK Z TABLICY w podp.C S = ", S);
+println("#TESTY SPECJALNE#");
+SUMA = Float64(0.0);
+SUMA = Float64(SUMA) + Float64(x[4]*y[4]);
+println(SUMA);
+SUMA = Float64(SUMA) + Float64(x[1]*y[1]);
+println(SUMA);
+SUMA = Float64(SUMA) + Float64(x[5]*y[5]);
+println(SUMA);
+SUMA = Float64(SUMA) + Float64(x[3]*y[3]);
+println(SUMA);
+SUMA = Float64(SUMA) + Float64(x[2]*y[2]);
+println(SUMA);
+println("SUMA BEZ TABLICY podp. C S = ", Float64(SUMA));
+println("#TESTY SPECJALNE#");
 # Podpunkt D
 S = Float64(0.0);
 Array = zeros(Float64, n);
@@ -137,7 +158,7 @@ for i = 1 : n
 end
 
 sort!(Array);
-# println(Array);
+println(Array);
 
 i = 1
 S_plus = Float64(0.0);
@@ -152,4 +173,4 @@ while (i <= n)
 end
 
 S = Float64(S_minus + S_plus);
-println("WYNIK w podp.D S = ", S);
+println("WYNIK Z TABLICY w podp.D S = ", S);
