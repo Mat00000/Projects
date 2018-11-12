@@ -80,14 +80,14 @@ public class Main {
                 numDec = Integer.parseInt(ciphersToDec[j], 2);
                 // ciphers[i][j] = Integer.toString(numDec);
                 ciphers[i][j] = (char)(numDec);
-                System.out.println(ciphers[i][j]); 
+                // System.out.println(ciphers[i][j]); 
             }
             // System.out.println(ciphers[i]);
         }
             
         System.out.println("\n");
         System.out.println("Zaczynamy:");
-        // System.out.println(ciphers.length);
+        // System.out.println(ciphers.length); 
         
         for(int i = 0; i < cipherToDec.length; i++) {
             int key = 0;
