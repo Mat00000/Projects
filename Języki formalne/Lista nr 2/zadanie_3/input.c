@@ -1,57 +1,33 @@
-%{
-#include <iostream>
-using namespace std;
-extern int yylex();
-bool flag = false;
+#include "test/*asdf*/header.h"
+#include <stdio.h>
 
-%}
-%option noyywrap
-%%
-"//".*							/** Ignoruj "one-line" comments */
-"//"(.*\\\n)*.*					/** Ignoruj "multi-line one-line comments" */
+/** \brief Java style Doc String - Foo function */
+int foo();
 
-"/**/"							/** Ignoruj "multi-line one-line comments" */
-"/**"[^*]+[.\n]*"*/"			{if(flag == true) ECHO;} 	/** Dokumentacja */
-"/*"[^*]+[.\n]*"*/"				{;}							/** Ignoruj "multi-line one-line comments" */
+int bar(); /**< Bar function */
 
-%%
+/// .NET Style Doc String
+int global_var = 1;
 
-int main(int argc, char* argv[]) {
-	char option; // zmienna
-	cout<<"T lub t pokaz dokumentacyjne.\n";
-	cin >> option;
-		if(option == 't' || option == 'T'){
-			flag = true;
-		}
-		else {
-			flag = false;
-		}
-	// wpisuj się ///////////
-	////////////
-	cout<<"Flaga -> "<<flag<<"\n";
+/* Hello */
+/* World
+*/
+int baz();
+//
 
-	char name_file_input[] = "input.c";	
-	char name_file_output[] = "output.c";
-	/* ? tutaj wchodza /// */
-	/*
-	
-	*/
-	FILE *input_file = fopen(name_file_input, "r");
-	FILE *output_file = fopen(name_file_output, "wt");
-	
-	if(!input_file) {
-		printf("ERROR: Brak pliku inputowego\n");
-		return -1;
-	}
-	
-	yyin = input_file;
-	yyout = output_file;
-	yylex();
+int main(int argc, const char* argv)
+{
+    //printf("/*  foo bar*/");
+    /*bar();
 
-	fclose(input_file);
-	fclose(output_file);
-	// kczy /* */
-	printf("Ukoczono\n");
- 
-  return 0;
+    //  
+    baz(); */
+    /* //*/
+    ////dasdas/
+    foo();
+    /////
+    printf("/*Aloha*/");
+    return 1;
+    //*/
+
 }

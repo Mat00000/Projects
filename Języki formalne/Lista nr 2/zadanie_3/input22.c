@@ -7,17 +7,17 @@ bool flag = false;
 %}
 %option noyywrap
 %%
-"/*""*/"						/* Ignoruj "one-line comments" */
-"/**"[^*]+[.\n]*"*/"			{if(flag == true) ECHO;} 	/* Dokumentacja */
-"/*"[^*]+[.\n]*"*/"				{;}							/* Ignoruj "multi-line one-line comments" */
-"//".*							/* Ignoruj "one-line" comments */
-"//"(.*\\\n)*.*					/* Ignoruj "multi-line one-line comments" */
-\(\"[^"]*\".*\)					{ECHO;}
+"//".*							/** Ignoruj "one-line" comments */
+"//"(.*\\\n)*.*					/** Ignoruj "multi-line one-line comments" */
+
+"/**/"							/** Ignoruj "multi-line one-line comments" */
+"/**"[^*]+[.\n]*"*/"			{if(flag == true) ECHO;} 	/** Dokumentacja */
+"/*"[^*]+[.\n]*"*/"				{;}							/** Ignoruj "multi-line one-line comments" */
 
 %%
 
 int main(int argc, char* argv[]) {
-	char option;
+	char option; // zmienna
 	cout<<"T lub t pokaz dokumentacyjne.\n";
 	cin >> option;
 		if(option == 't' || option == 'T'){
@@ -26,12 +26,16 @@ int main(int argc, char* argv[]) {
 		else {
 			flag = false;
 		}
-		
+	// wpisuj się ///////////
+	////////////
 	cout<<"Flaga -> "<<flag<<"\n";
 
 	char name_file_input[] = "input.c";	
 	char name_file_output[] = "output.c";
-
+	/* ? tutaj wchodza /// */
+	/*
+	
+	*/
 	FILE *input_file = fopen(name_file_input, "r");
 	FILE *output_file = fopen(name_file_output, "wt");
 	
@@ -46,7 +50,7 @@ int main(int argc, char* argv[]) {
 
 	fclose(input_file);
 	fclose(output_file);
-
+	// kczy /* */
 	printf("Ukoczono\n");
  
   return 0;
