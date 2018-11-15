@@ -1,0 +1,29 @@
+1.	Skopiowałem utworzony certyfikat A i jego klucz w podanej kolejności do "conf/ssl.crt" oraz do "conf/ssl.key"
+	certA.crt	privatekeyA.key
+2.	Do pliku systemowego musiałem dodać linijkę aby udostępniać host o podanej nazwie 
+	127.0.0.1       ha11oweenf0rum.com
+3.	Następnie skonfigurowałem host aby można było uruchamiać stronę jako http
+	
+	***
+<VirtualHost ha11oweenf0rum.com:80>
+     DocumentRoot "C:/xampp/htdocs/osada"
+     ServerName ha11oweenf0rum.com
+	 ServerAlias ha11oweenf0rum.com https://ha11oweenf0rum.com
+</VirtualHost>
+	***
+
+4.	Następnie skonfigurowałem host aby można było uruchamiać stronę jako https
+	
+	***
+<VirtualHost ha11oweenf0rum.com:443>
+     DocumentRoot "C:/xampp/htdocs/osada"
+     ServerName ha11oweenf0rum.com
+	 ServerAlias ha11oweenf0rum.com https://ha11oweenf0rum.com
+     SSLEngine On
+     SSLCertificateFile "conf/ssl.crt/certA.crt"
+     SSLCertificateKeyFile "conf/ssl.key/privatekeyA.key"
+</VirtualHost>
+	***
+
+5.	Uaktualniłem kod w index.php, aby móc za pomocą domeny automatycznie przekierowywać na bezpieczną stronę
+	

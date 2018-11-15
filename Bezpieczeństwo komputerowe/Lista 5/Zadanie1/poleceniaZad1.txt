@@ -1,0 +1,54 @@
+1.	openssl genrsa -out privatekeyA.pem 4096
+2.	openssl req -new -key privatekeyA.pem -out certA.csr
+
+	***
+Dane wprowadzane:
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:PL
+State or Province Name (full name) [Some-State]:Dolnośląskie
+Locality Name (eg, city) []:Wrocław
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:ML
+Organizational Unit Name (eg, section) []:Laskowski
+Common Name (e.g. server FQDN or YOUR name) []:ha11oweenf0rum.com
+Email Address []:236618@student.pwr.edu.pl
+
+Please enter the following 'extra' attributes
+to be sent with your certificate request
+A challenge password []:mateusz
+An optional company name []:ML
+	***
+
+3. 	openssl genrsa -out privatekeyB.pem 4096
+4.	openssl req -new -x509 -key privatekeyB.pem -out CAcert.crt -days 20
+
+	***
+You are about to be asked to enter information that will be incorporated
+into your certificate request.
+What you are about to enter is what is called a Distinguished Name or a DN.
+There are quite a few fields but you can leave some blank
+For some fields there will be a default value,
+If you enter '.', the field will be left blank.
+-----
+Country Name (2 letter code) [AU]:PL
+State or Province Name (full name) [Some-State]:Dolnośląskie
+Locality Name (eg, city) []:Wrocław
+Organization Name (eg, company) [Internet Widgits Pty Ltd]:ML
+Organizational Unit Name (eg, section) []:Mateusz
+Common Name (e.g. server FQDN or YOUR name) []:ha11oweenf0rum.com
+Email Address []:236618@student.pwr.edu.pl
+	***
+	
+5.	openssl x509 -req -days 45 -in certA.csr -CA CAcert.crt -CAkey privatekeyB.pem -set_serial 01 -out certA.crt
+
+	***
+Signature ok
+subject=/C=PL/ST=Dolno\xC2\x98l\xC2\xA5skie/L=Wroc\xC2\x88aw/O=ML/OU=Laskowski/CN=ha11oweenf0rum.com/emailAddress=236618@student.pwr.edu.pl
+Getting CA Private Key
+unable to write 'random state'
+	**
