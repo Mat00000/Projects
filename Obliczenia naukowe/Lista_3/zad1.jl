@@ -13,17 +13,19 @@ function mbisekcji(f, a::Float64, b::Float64, delta::Float64, epsilon::Float64)
     u = f(a)
     w = f(b)
     e = b - a
+    it = 0;
 
     if (sign(u) == sign(w))
-        return (a, b, 0, 1)
+        return (0, 0, 0, 1)
     end
     while(true)
+        it += 1
         e = e / 2
         r = a + e
         v = f(r)
 
         if (abs(e) < delta || abs(v) < epsilon)
-            return (r, v, 1, 0)
+            return (r, v, it, 0)
         end
         if (sign(v) != sign(u))
             b = r

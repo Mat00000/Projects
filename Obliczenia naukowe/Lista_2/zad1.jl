@@ -24,7 +24,7 @@ while (i > 0 )
     # println("S in loop ", S);
     i = i - 1;
 end
-println("B) S = ", S);
+println("B) S = ", S); 
 
 # C
 S = Float32(0.0);
