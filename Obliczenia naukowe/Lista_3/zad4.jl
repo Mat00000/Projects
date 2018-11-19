@@ -17,6 +17,6 @@ end
 DELTA = 0.5 * 10.0^(-5)
 EPSILON = 0.5 * 10.0^(-5)
 
-println(mbisekcji(f, 1.5, 2.0, DELTA, EPSILON))
-println(mstycznych(f, pf, 1.5, DELTA, EPSILON, 1000))
-println(msiecznych(f, 1.0, 2.0, DELTA, EPSILON, 1000))
+println(calculationMethods.mbisekcji(f, 1.5, 2.0, DELTA, EPSILON))
+println(calculationMethods.mstycznych(f, pf, 1.5, DELTA, EPSILON, 1000))
+println(calculationMethods.msiecznych(f, 1.0, 2.0, DELTA, EPSILON, 1000))

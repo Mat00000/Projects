@@ -48,21 +48,21 @@ DELTA = 0.00001
 
 ## below are the results of all examples
 
-println(mbisekcji(f1, -3.0, 1.5, DELTA, EPSILON))
-println(mbisekcji(f1, -3.0, 20.0, DELTA, EPSILON))
-println(mbisekcji(f1, 1.0, 1.5, DELTA, EPSILON))                              ## return error = 1
-println(mbisekcji(f1, 0.5, 2.5, DELTA, EPSILON))                              ## return error = 1
+println(calculationMethods.mbisekcji(f1, -3.0, 1.5, DELTA, EPSILON))
+println(calculationMethods.mbisekcji(f1, -3.0, 20.0, DELTA, EPSILON))
+println(calculationMethods.mbisekcji(f1, 1.0, 1.5, DELTA, EPSILON))                              ## return error = 1
+println(calculationMethods.mbisekcji(f1, 0.5, 2.5, DELTA, EPSILON))                              ## return error = 1
 
-println(mstycznych(f1, pf1, -3.0, DELTA, EPSILON, 1000))                       
-println(mstycznych(f1, pf2, 20.0, DELTA, EPSILON, 1000))                     ## return error = 2                       
+println(calculationMethods.mstycznych(f1, pf1, -3.0, DELTA, EPSILON, 1000))                       
+println(calculationMethods.mstycznych(f1, pf2, 20.0, DELTA, EPSILON, 1000))                     ## return error = 2                       
 
-println(mbisekcji(f2, -3.0, 1.5, DELTA, EPSILON))
-println(mbisekcji(f2, 1.0, 1.5, DELTA, EPSILON))               
-println(mbisekcji(f2, 0.5, 150.0, DELTA, EPSILON))
+println(calculationMethods.mbisekcji(f2, -3.0, 1.5, DELTA, EPSILON))
+println(calculationMethods.mbisekcji(f2, 1.0, 1.5, DELTA, EPSILON))               
+println(calculationMethods.mbisekcji(f2, 0.5, 150.0, DELTA, EPSILON))
 
-println(mstycznych(f2, pf2, -3.0, DELTA, EPSILON, 1000))                       ## return error = 2        
-println(mstycznych(f2, pf2, 20.0, DELTA, EPSILON, 1000))                       ## return error = 2
+println(calculationMethods.mstycznych(f2, pf2, -3.0, DELTA, EPSILON, 1000))                       ## return error = 2        
+println(calculationMethods.mstycznych(f2, pf2, 20.0, DELTA, EPSILON, 1000))                       ## return error = 2
 
-println(msiecznych(f1, 0.5, 1.5, DELTA, EPSILON, 1000))
-println(msiecznych(f1, 0.5, 20.0, DELTA, EPSILON, 1000))
-println(msiecznych(f2, 0.8, 1.2, DELTA, EPSILON, 1000))
+println(calculationMethods.msiecznych(f1, 0.5, 1.5, DELTA, EPSILON, 1000))
+println(calculationMethods.msiecznych(f1, 0.5, 20.0, DELTA, EPSILON, 1000))
+println(calculationMethods.msiecznych(f2, 0.8, 1.2, DELTA, EPSILON, 1000))
