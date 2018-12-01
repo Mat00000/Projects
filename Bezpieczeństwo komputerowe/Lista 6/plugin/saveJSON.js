@@ -46,7 +46,7 @@ $(document).ready(function () {
     let array = JSON.parse(localStorage.getItem("array"));
     let exist = false;
     let ID = null;
-    console.log(array);
+    console.log("ARRAY", array);
     if(array == null) {
         exist = false;
     }
@@ -61,7 +61,8 @@ $(document).ready(function () {
     }
 
     $('input[type="submit"]').click(function () {
-        document.getElementById("datepicker").click()
+        console.log("działa")
+        // document.getElementById("datepicker").click()
         if(array == null) {
             localStorage.setItem("array", JSON.stringify(newArray));
         }

