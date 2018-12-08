@@ -110,4 +110,4 @@ function rysujNnfx(f, a::Float64, b::Float64, n::Int)
     println("Plots generated")
 end
 
-end
+end     # ending module
