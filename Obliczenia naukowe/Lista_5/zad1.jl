@@ -39,7 +39,6 @@ function solutionDistributionLU()
         end
     end
             
-    Matrix, n, l = gaussian.readMatrix("dane/input/A.txt")
     (L, U), error = gaussian.distributionLUWithPivot(Matrix, n, l)
     println("distributionLUWithPivot: \n\terror -> ", error)
     distributionMatrixWithPivot = L * U
