@@ -12,12 +12,14 @@ function testGaussiannElimination()
     Matrix, _n, l = gaussian.readMatrix("dane/Dane_16/A.txt")
     V, n = gaussian.readVector("dane/Dane_16/b.txt")
     @time x, error = gaussian.gaussianElimination(Matrix, V, n, l)
+    @time x, error = gaussian.gaussianElimination(Matrix, V, n, l)
     println("gaussianElimination_16: \n\terror -> ", error)
     gaussian.writeVector(x, "dane/tests/vector_16.txt")
     for i in 1:n
         @test x[i] ≈ 1.0
     end
 
+    @time x, error = gaussian.gaussianEliminationWithPivot(Matrix, V, n, l)
     @time x, error = gaussian.gaussianEliminationWithPivot(Matrix, V, n, l)
     println("gaussianEliminationWithPivot_16: \n\terror -> ", error)
     gaussian.writeVector(x, "dane/tests/vectorWithPivot_16.txt")
@@ -29,12 +31,14 @@ function testGaussiannElimination()
     Matrix, _n, l = gaussian.readMatrix("dane/Dane_10000/A.txt")
     V, n = gaussian.readVector("dane/Dane_10000/b.txt")
     @time x, error = gaussian.gaussianElimination(Matrix, V, n, l)
+    @time x, error = gaussian.gaussianElimination(Matrix, V, n, l)
     println("gaussianElimination_10000: \n\terror -> ", error)
     gaussian.writeVector(x, "dane/tests/vector_10000.txt")
     for i in 1:n
         @test x[i] ≈ 1.0
     end
 
+    @time x, error = gaussian.gaussianEliminationWithPivot(Matrix, V, n, l)
     @time x, error = gaussian.gaussianEliminationWithPivot(Matrix, V, n, l)
     println("gaussianEliminationWithPivot_10000: \n\terror -> ", error)
     gaussian.writeVector(x, "dane/tests/vectorWithPivot_10000.txt")
@@ -46,12 +50,14 @@ function testGaussiannElimination()
     Matrix, _n, l = gaussian.readMatrix("dane/Dane_50000/A.txt")
     V, n = gaussian.readVector("dane/Dane_50000/b.txt")
     @time x, error = gaussian.gaussianElimination(Matrix, V, n, l)
+    @time x, error = gaussian.gaussianElimination(Matrix, V, n, l)
     println("gaussianElimination_50000: \n\terror -> ", error)
     gaussian.writeVector(x, "dane/tests/vector_50000.txt")
     for i in 1:n
         @test x[i] ≈ 1.0
     end
 
+    @time x, error = gaussian.gaussianEliminationWithPivot(Matrix, V, n, l)
     @time x, error = gaussian.gaussianEliminationWithPivot(Matrix, V, n, l)
     println("gaussianEliminationWithPivot_50000: \n\terror -> ", error)
     gaussian.writeVector(x, "dane/tests/vectorWithPivot_50000.txt")
@@ -63,6 +69,7 @@ end
 function testDistributionLU(test::Bool)
     # test for matrix 16
     Matrix, n, l = gaussian.readMatrix("dane/Dane_16/A.txt")
+    @time (L, U), error = gaussian.distributionLU(Matrix, n, l)
     @time (L, U), error = gaussian.distributionLU(Matrix, n, l)
     println("distributionLU_16: \n\terror -> ", error)
     distributionMatrix = L * U
@@ -79,6 +86,7 @@ function testDistributionLU(test::Bool)
         end
     end
             
+    @time (L, U), error = gaussian.distributionLUWithPivot(Matrix, n, l)
     @time (L, U), error = gaussian.distributionLUWithPivot(Matrix, n, l)
     println("distributionLUWithPivot_16: \n\terror -> ", error)
     distributionMatrixWithPivot = L * U
@@ -98,6 +106,7 @@ function testDistributionLU(test::Bool)
     # test for matrix 10000
     Matrix, n, l = gaussian.readMatrix("dane/Dane_10000/A.txt")
     @time (L, U), error = gaussian.distributionLU(Matrix, n, l)
+    @time (L, U), error = gaussian.distributionLU(Matrix, n, l)
     println("distributionLU_10000: \n\terror -> ", error)
     distributionMatrix = L * U
 
@@ -113,6 +122,7 @@ function testDistributionLU(test::Bool)
         end
     end
         
+    @time (L, U), error = gaussian.distributionLUWithPivot(Matrix, n, l)
     @time (L, U), error = gaussian.distributionLUWithPivot(Matrix, n, l)
     println("distributionLUWithPivot_10000: \n\terror -> ", error)
     distributionMatrixWithPivot = L * U
@@ -132,6 +142,7 @@ function testDistributionLU(test::Bool)
     # test for matrix 50000
     Matrix, n, l = gaussian.readMatrix("dane/Dane_50000/A.txt")
     @time (L, U), error = gaussian.distributionLU(Matrix, n, l)
+    # @time (L, U), error = gaussian.distributionLU(Matrix, n, l)
     println("distributionLU_50000: \n\terror -> ", error)
     distributionMatrix = L * U
 
@@ -148,6 +159,7 @@ function testDistributionLU(test::Bool)
     end
             
     @time (L, U), error = gaussian.distributionLUWithPivot(Matrix, n, l)
+    # @time (L, U), error = gaussian.distributionLUWithPivot(Matrix, n, l)
     println("distributionLUWithPivot_50000: \n\terror -> ", error)
     distributionMatrixWithPivot = L * U
 
@@ -170,6 +182,7 @@ function testSolutionFromLUMatrices()
     V, n = gaussian.readVector("dane/Dane_16/b.txt")
     (L, U), error = gaussian.distributionLU(Matrix, n, l)
     @time x = gaussian.solutionFromLUMatrices(L, U, V, n, l)
+    @time x = gaussian.solutionFromLUMatrices(L, U, V, n, l)
     gaussian.writeVector(x, "dane/tests/vectorFromLU_16.txt")
     for i in 1:n
         @test x[i] ≈ 1.0
@@ -179,6 +192,7 @@ function testSolutionFromLUMatrices()
     Matrix, _n, l = gaussian.readMatrix("dane/Dane_10000/A.txt")
     V, n = gaussian.readVector("dane/Dane_10000/b.txt")
     (L, U), error = gaussian.distributionLU(Matrix, n, l)
+    @time x = gaussian.solutionFromLUMatrices(L, U, V, n, l)
     @time x = gaussian.solutionFromLUMatrices(L, U, V, n, l)
     gaussian.writeVector(x, "dane/tests/vectorFromLU_10000.txt")
     for i in 1:n
@@ -190,6 +204,7 @@ function testSolutionFromLUMatrices()
     V, n = gaussian.readVector("dane/Dane_50000/b.txt")
     (L, U), error = gaussian.distributionLU(Matrix, n, l)
     @time x = gaussian.solutionFromLUMatrices(L, U, V, n, l)
+    @time x = gaussian.solutionFromLUMatrices(L, U, V, n, l)
     gaussian.writeVector(x, "dane/tests/vectorFromLU_50000.txt")
     for i in 1:n
         @test x[i] ≈ 1.0
@@ -199,6 +214,6 @@ end
 # tests for tast 1
 # testGaussiannElimination()
 # tests for task 2
-# testDistributionLU(false)
+testDistributionLU(false)
 # test for task 3
 testSolutionFromLUMatrices()
