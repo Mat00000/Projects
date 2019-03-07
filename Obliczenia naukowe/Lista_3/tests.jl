@@ -25,7 +25,7 @@ DELTA = 0.00001
 
 ## uncomment one of the tests to see the results
 
-# @test mbisekcji(f1, -3.0, 1.5, DELTA, EPSILON)
+@test mbisekcji(f1, -3.0, 1.5, DELTA, EPSILON)
 # @test mbisekcji(f1, -3.0, 20.0, DELTA, EPSILON)
 # @test mbisekcji(f1, 1.0, 1.5, DELTA, EPSILON)                              ## return error = 1
 # @test mbisekcji(f1, 0.5, 2.5, DELTA, EPSILON)                              ## return error = 1
