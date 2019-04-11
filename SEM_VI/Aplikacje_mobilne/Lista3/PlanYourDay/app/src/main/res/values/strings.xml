@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Plan Your Day</string>
+    <string name="action_settings">Settings</string>
+    <string name="header">Fill out the data</string>
+    <string name="name_event">Name of event</string>
+    <string name="info_type">Choose the type of event</string>
+
+    <string name="type_information">Information</string>
+    <string name="type_shopping">Shopping</string>
+    <string name="type_travel">Travel</string>
+    <string name="type_house">House</string>
+    <string name="info_date">Type date of event</string>
+    <string name="info_time">Type time of event</string>
+    <string name="text_timer">Choose time</string>
+    <string name="info_description">Describe of event</string>
+    <string name="confirm_button">Confirm</string>
+    <string name="refresh_button">Refresh</string>
+    <string name="date_button">Date</string>
+
+    <string name="icon">Icon Activity</string>
+
+    <string name="alert_empty">Name of event cant be empty!</string>
+    <string name="alert_time">Choose time of event!</string>
+
+    <string-array name="types">
+        <item>All types</item>
+        <item>Information</item>
+        <item>Shopping</item>
+        <item>Travel</item>
+        <item>House</item>
+    </string-array>
+</resources>

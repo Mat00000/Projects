@@ -1,10 +1,28 @@
 <resources>
     <string name="app_name">Szubienica</string>
-    <string name="prawie_wisielec_1_0">Prawie Wisielec 1.0</string>
+    <string name="prawie_wisielec_1_0">Wisielec 2.0</string>
     <string name="losuj_has_o">Losuj hasło</string>
     <string name="wynik">Wynik</string>
     <string name="wpisz_liter">Wpisz literę</string>
     <string name="wylosuj_has_o">Wylosuj hasło</string>
     <string name="sprawd">SPRAWDŹ</string>
     <string name="has_o">HASŁO</string>
+
+    <string-array name="words">
+        <item>INFORMATYKA</item>
+        <item>KOMPUTER</item>
+        <item>POLITECHNIKA</item>
+        <item>LAPTOP</item>
+        <item>MISTRZ</item>
+        <item>WENECJA</item>
+        <item>SEMESTR</item>
+        <item>POLONISTA</item>
+        <item>MATEMATYKA</item>
+        <item>CHEMIA</item>
+        <item>ULICA</item>
+        <item>FILM</item>
+        <item>BIURKO</item>
+        <item>TERMINARZ</item>
+        <item>TERMINAL</item>
+    </string-array>
 </resources>

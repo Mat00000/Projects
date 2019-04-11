@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent"
+                android:layout_height="match_parent" android:orientation="vertical">
+    <ImageView
+            android:layout_width="103dp"
+            android:layout_height="96dp" app:srcCompat="@drawable/house" android:id="@+id/iconActivity"
+            android:layout_marginTop="10dp" android:layout_alignParentTop="true" android:layout_alignParentStart="true"
+            android:layout_marginStart="10dp" android:contentDescription="typeActivity"/>
+    <TextView
+            android:text="Monday, 26"
+            android:layout_width="228dp"
+            android:layout_height="wrap_content" android:id="@+id/dateDay"
+            android:layout_marginTop="12dp" android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/iconActivity" android:layout_marginStart="19dp"
+            android:fontFamily="sans-serif-medium" android:textSize="24sp"/>
+    <TextView
+            android:text="Birthday's Anabelle"
+            android:layout_width="226dp"
+            android:layout_height="wrap_content" android:id="@+id/nameActivity" android:layout_marginTop="51dp"
+            android:layout_alignParentTop="true" android:layout_toEndOf="@+id/iconActivity"
+            android:layout_marginStart="19dp" android:fontFamily="sans-serif-black" android:textSize="18sp"/>
+    <TextView
+            android:text="18:55"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:id="@+id/timeActivity"
+            android:layout_toEndOf="@+id/iconActivity"
+            android:layout_marginStart="19dp" android:layout_marginTop="80dp" android:layout_alignParentTop="true"
+            android:textSize="18sp" android:fontFamily="sans-serif-black"/>
+    <TextView
+            android:text="05-04-2019"
+            android:layout_width="108dp"
+            android:layout_height="wrap_content" android:id="@+id/dateActivity" android:layout_marginTop="82dp"
+            android:layout_alignParentTop="true" android:layout_toEndOf="@+id/timeActivity"
+            android:layout_marginStart="10dp" android:textSize="14sp"/>
+</RelativeLayout>

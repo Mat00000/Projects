@@ -1,33 +1,41 @@
 package com.example.szubienica
 
-import android.content.DialogInterface
 import android.graphics.Color
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.app.AlertDialog
+import android.support.v7.app.AppCompatActivity
 import android.view.View
-import android.widget.*
+import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
+import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
-    private val words = listOf<String>("UGANDA", "KOT", "POLITECHNIKA", "ANDROID", "KAPITAN", "STUDIO",
-                                        "TELEWIZJA", "DRZEWO", "BUDYNEK", "ORACLE")
-
+//    private val words = listOf<String>("UGANDA", "KOT", "POLITECHNIKA", "ANDROID", "KAPITAN", "STUDIO",
+//                                        "TELEWIZJA", "DRZEWO", "BUDYNEK", "ORACLE")
+    private lateinit var words: Array<String>
     private var choosenWord = ""
     private var hiddenWord = ""
     private var wordLetters = CharArray(0)
     private var hiddenLetters = CharArray(0)
     private var countOfGuessedLetters = 0
     private var resultGame = 0
+    private var countToDeath = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         findViewById<Button>(R.id.resultGame).text = "Wynik: $resultGame"
+        words = resources.getStringArray(R.array.words)
     }
 
     fun randomWord(view: View) {
+        if(countToDeath == 7) {
+            newGame()
+        }
         if(countOfGuessedLetters != 0) {
             Toast.makeText(this, "Musisz odkryć całe słowo! -_-", Toast.LENGTH_LONG).show()
         }
@@ -89,8 +97,40 @@ class MainActivity : AppCompatActivity() {
         else {
             resultGame--
             button.setBackgroundColor(Color.RED)
+            changeImage()
         }
         button.text = "Wynik: $resultGame"
+    }
+
+    private fun changeImage() {
+        countToDeath++
+        when(countToDeath) {
+            1 -> imageView.setImageResource(R.drawable.w_1)
+            2 -> imageView.setImageResource(R.drawable.w_2)
+            3 -> imageView.setImageResource(R.drawable.w_3)
+            4 -> imageView.setImageResource(R.drawable.w_4)
+            5 -> imageView.setImageResource(R.drawable.w_5)
+            6 -> imageView.setImageResource(R.drawable.w_6)
+            7 -> imageView.setImageResource(R.drawable.w_7)
+        }
+        if(countToDeath == 7) {
+            var builder = AlertDialog.Builder(this)
+            with(builder) {
+                setTitle("Zawisłeś...")
+                setMessage("Twój wynik to $resultGame. Niech Bogowie mają Cię w swojej opiece!")
+                setNegativeButton("Nowy żywot", {_, _ -> newGame()})
+                show()
+            }
+        }
+    }
+
+    private fun newGame() {
+        resultGame = 0
+        countToDeath = 0
+        imageView.setImageResource(R.drawable.w_0)
+        doRandomWord()
+        findViewById<Button>(R.id.resultGame).text = "Wynik: $resultGame"
+        findViewById<Button>(R.id.resultGame).setBackgroundColor(Color.rgb(51, 181, 229))
     }
 
     private fun warning(string: String) {
