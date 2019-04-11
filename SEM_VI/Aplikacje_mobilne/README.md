@@ -6,3 +6,4 @@
 * [Lista nr 1](https://github.com/Mat00000/Projects/tree/master/SEM_VI/Aplikacje_mobilne/Lista1)
 * [Lista nr 2](https://github.com/Mat00000/Projects/tree/master/SEM_VI/Aplikacje_mobilne/Lista2)
 * [Lista nr 3](https://github.com/Mat00000/Projects/tree/master/SEM_VI/Aplikacje_mobilne/Lista3)
+* [Lista nr 4](https://github.com/Mat00000/Projects/tree/master/SEM_VI/Aplikacje_mobilne/Lista4)
