@@ -28,6 +28,7 @@ public class Main {
                     fun = new RedBlackTree();
                     break;
                 case "splay":
+					fun = new SplayTree();
                     break;
             }
         }
