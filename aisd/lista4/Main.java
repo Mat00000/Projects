@@ -19,17 +19,24 @@ public class Main {
         Scanner reader = new Scanner(System.in);
         String[] input;
 
-        if((args.length == 4 || args.length == 2) && args[0].equals("--type")) {
-            switch(args[1]) {
-                case "bst":
-                    fun = new BinarySearchTree();
-                    break;
-                case "rbt":
-                    fun = new RedBlackTree();
-                    break;
-                case "hmap":
-                    break;
-            }
+        if((args.length == 4 || args.length == 2)) {
+			if(args[0].equals("--type")) {
+					switch(args[1]) {
+						case "bst":
+							fun = new BinarySearchTree();
+							break;
+						case "rbt":
+							fun = new RedBlackTree();
+							break;
+						case "splay":
+							fun = new SplayTree();
+							break;
+					}
+			}
+			else {
+            System.err.println("ERROR");
+            System.exit(0);
+			}
         }
         else {
             System.err.println("ERROR");
@@ -40,18 +47,19 @@ public class Main {
         input = reader.nextLine().split(" ");
 
         while(numberOfOperations > 0) {
+			System.err.println("TU?");
             input = reader.nextLine().split(" ");
             if(input.length != 2 && input.length != 1) {
                 System.err.println("ERROR");
                 System.exit(0);
             }
+			System.out.println(input);
             switch (input[0]) {
                 case "insert":
                     fun.insert(input[1]);
                     numberOfInsert++;
                     break;
                 case "load":
-
                     fun.load(input[1]);
                     numberOfLoad++;
                     break;
@@ -107,7 +115,6 @@ public class Main {
         System.err.println("Number of finds: " + numberOfFind);
         System.err.println("Number of min: " + numberOfMin);
         System.err.println("Number of max: " + numberOfMax);
-        System.err.println("Number of successors: " + numberOfSuccessor);
         System.err.println("Number of inorders: " + numberOfInorder);
 
         // System.err: Size of the structure

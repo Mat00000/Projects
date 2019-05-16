@@ -188,7 +188,7 @@ public class WalkingTree {
     }
 
     public static void main(String[] args) {
-        //test();
+//        test();
 
         System.out.print("number of vertices: ");
         Scanner reader = new Scanner(System.in);

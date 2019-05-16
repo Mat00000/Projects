@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.AvgTimeController">
+    <children>
+        <LineChart fx:id="lineChart" layoutX="50.0" layoutY="-26.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="0.0">
+            <xAxis>
+                <CategoryAxis side="BOTTOM" />
+            </xAxis>
+            <yAxis>
+                <NumberAxis side="LEFT" />
+            </yAxis>
+        </LineChart>
+        <VBox layoutX="505.0" layoutY="6.0" prefHeight="75.0" prefWidth="88.0" AnchorPane.rightAnchor="7.0" AnchorPane.topAnchor="6.0">
+            <children>
+                <Button fx:id="SelectCheck" onAction="#drawSelect" prefWidth="88.0" text="Select" />
+                <Button fx:id="InsertCheck" onAction="#drawInsert" prefWidth="88.0" text="Insert" />
+                <Button fx:id="HeapCheck" onAction="#drawHeap" prefWidth="88.0" text="Heap" />
+                <Button fx:id="QuickCheck" onAction="#drawQuick" prefWidth="88.0" text="Quick" />
+            <Button fx:id="Quick2Check" onAction="#drawQuick2" prefWidth="88.0" text="Quick2" />
+            <Button fx:id="QuickMCheck" onAction="#drawModifiedQuick" prefWidth="88.0" text="QuickM" />
+                <Button mnemonicParsing="false" onAction="#drop" prefWidth="88.0" text="Drop" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>
