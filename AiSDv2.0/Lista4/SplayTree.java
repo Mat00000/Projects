@@ -1,5 +1,13 @@
+import java.io.*;
+import java.util.Scanner;
+import java.util.StringTokenizer;
+
 public class SplayTree extends Functionality
  {	
+ 
+	static int moreNumberOfInsert = 0;
+    static int maxSize = 0;
+    static int reduceSize = 0;
 	  /** Class Node **/
 	 class SplayNode
 	 {    
@@ -271,7 +279,8 @@ public class SplayTree extends Functionality
 	 
 	 @Override
 	 public void load(String f) {
-		 // nothing
+		 File file = new File(f);
+         loadFile(file);
 	 }
 	 
 	 @Override
@@ -317,5 +326,23 @@ public class SplayTree extends Functionality
              postorder(r.right);
              System.out.print(r.element +" ");
          }
-     }     
+     }    
+
+	private void loadFile(File file) {
+        Scanner scan = null;
+        try {
+            scan = new Scanner(file);
+        } catch(FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        StringTokenizer token;
+        while(scan.hasNextLine()) {
+            token = new StringTokenizer(scan.nextLine(), " ");
+            while (token.hasMoreElements()) {
+                insert(token.nextToken());
+                moreNumberOfInsert++;
+            }
+        }
+    }
  }
