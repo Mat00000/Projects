@@ -21,10 +21,9 @@ Graph::Graph(int k, int i){
   for (int x = 0; x < k_2; x++)
       v1[x] = my_rand(k_2, i);
 
-  std::cout << std::endl << "::GRAPH::" << std::endl;
-  std::cout << "|V| = |L| + |R|, |L| = |R| = " << k_2 << std::endl;
-  std::cout << "|E| = |L| * " << i << " = " << k_2 * my_i << std::endl;
-  std::cout << std::endl << "L:" << std::endl;
+  std::cout << "Number of Verticles: " << k_2 << std::endl;
+  std::cout << "Numer of Edges: " << k_2 * my_i << "       , |V_1| * " << i << std::endl;
+  std::cout << std::endl << "V_1:" << std::endl;
 
   for (int x = 0; x < k_2; x++){
     std::cout << x << ": ";
@@ -146,12 +145,13 @@ void Graph::program(){
     if(!esc) break;
   }
   std::cout << "Number of matches: " << fmax << std::endl << std::endl;
+  /*
   if(fmax > 0)
     for(v = 0; v < 2*k_2; v++)
       for(u = 0; u < 2*k_2; u++)
         if((C[v][u] == 1) && (F[v][u] == 1))
           std::cout << u << " - " << v << std::endl;
-
+  */
   for(i = 0; i <= 2*k_2 + 1; i++){
       delete [] C[i];
       delete [] F[i];
@@ -181,7 +181,8 @@ void Graph::createV2(int k_2, int i){
     }
     v2[z][counter] = -1;
   }
-  std::cout << std::endl << "R:" << std::endl;
+  /* print V_2
+  std::cout << std::endl << "V_2:" << std::endl;
   for (int x = 0; x < k_2; x++){
     std::cout << x + k_2 << ": ";
     int y = 0;
@@ -191,4 +192,5 @@ void Graph::createV2(int k_2, int i){
     }
     std::cout << std::endl;
   }
+  */
 }

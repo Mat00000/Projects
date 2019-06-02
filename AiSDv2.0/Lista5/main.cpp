@@ -7,7 +7,7 @@
 int main(int argc, const char * argv[]){
 
   if (argc != 5  || strcmp(argv[1], "--size") || strcmp(argv[3], "--degree")){
-    std::cout << "You must write \"./zad2 --size k --degree i" << std::endl;
+    std::cout << "Error: --size k --degree i" << std::endl;
     return 1;
   }
 
@@ -20,6 +20,6 @@ int main(int argc, const char * argv[]){
   start = clock();
   G.program();
   stop = clock();
-  std::cerr << std::endl << "Duration of the entire program: "  << stop - start << " ms" << std::endl;
+  std::cerr << std::endl << "Time: "  << stop - start << " ms" << std::endl;
   return 0;
 }
