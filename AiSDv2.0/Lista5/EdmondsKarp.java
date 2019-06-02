@@ -1,5 +1,6 @@
 import java.util.ArrayDeque;
 import java.util.Queue;
+import java.io.*;
 
 public class EdmondsKarp {
 
@@ -75,4 +76,29 @@ public class EdmondsKarp {
             result += flow[s][i];
         return result;
     }
+	
+	public void showGraph(int numOfVerticles) throws IOException {
+		File file = new File("data.txt");
+		FileOutputStream fos = new FileOutputStream(file);
+		
+		BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(fos));
+		
+		//System.out.println("param n := " + numOfVerticles + ";");
+		bw.write("param n := " + numOfVerticles + ";");
+		bw.newLine();
+		//System.out.println("param : E :   a :=");
+		bw.write("param : E :   a :=");
+		bw.newLine();
+		for(int i = 0; i < numOfVerticles; i++) {
+			for(int j = 0; j < numOfVerticles; j++) {
+				// System.out.println((i+1) +" " + (j+1) + "    " + capacity[i][j]);
+				bw.write((i+1) +" " + (j+1) + "    " + capacity[i][j]);
+				bw.newLine();
+			}
+		}
+		//System.out.println(";");
+		bw.write(";");
+		bw.newLine();
+		bw.close();
+	}
 }
